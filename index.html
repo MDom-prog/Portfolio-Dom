@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domnic Macdonald - Consultant Data & Digital</title>
+    <!-- Font Awesome pour l’icône PDF -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Variables CSS pour une personnalisation facile */
+        :root {
+            --primary-color: #1e3a8a; /* Bleu foncé */
+            --secondary-color: #f8fafc; /* Gris clair */
+            --text-color: #1e293b; /* Gris foncé */
+            --accent-color: #3b82f6; /* Bleu clair pour liens */
+            --font-family: 'Arial', sans-serif;
+        }
+
+        * {
+            margin: -20;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+        }
+
+nav a.active {
+  color: var(--accent-color);   /* couleur différente */
+  font-weight: bold;            /* texte en gras */
+  border-bottom: 2px solid var(--accent-color); /* soulignement */
+}
+
+
+/* Style pour la phrase d’accroche */
+.tagline {
+  font-style: italic;          /* effet citation */
+  font-size: 1.15rem;          /* taille légèrement visible */
+  font-family: Georgia, serif; /* police élégante différente du reste */
+  color: var(--secondary-color);
+  opacity: 0.85;               /* subtilité moderne */
+  margin-top: -18px;           /* rapproche du nom */
+  margin-bottom: 25px;         /* espace avant le métier */
+  letter-spacing: 0.5px;       /* légère aération des lettres */
+  position: relative;
+}
+
+.tagline::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--secondary-color);
+  opacity: 0.5;
+  margin: 8px auto 0; /* centré sous la phrase */
+  border-radius: 2px;
+}
+        
+.about p {
+  text-align: center;
+}
+
+.about h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--accent-color);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.about {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about {
+  padding: 60px 20px;
+}
+
+.about p {
+  max-width: 800px;
+  margin: 0 auto 15px;
+}
+
+.about p {
+  margin-bottom: 20px;
+}
+
+
+.skills { padding: 60px 20px; }
+.skills h2 { text-align:center; font-size:2.2rem; margin-bottom:10px; color:var(--primary-color); }
+.skills h2::after {
+  content:""; display:block; width:60px; height:2px; background:var(--accent-color);
+  margin:10px auto 0; border-radius:2px;
+}
+.skills-cat { max-width:1100px; margin:36px auto 12px; color:var(--primary-color); }
+.skills-grid {
+  max-width:1100px; margin:0 auto 10px;
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:22px;
+}
+.skill-card {
+  background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:14px; padding:22px;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.skill-card:hover {
+  transform:translateY(-3px);
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  border-color: rgba(59,130,246,.25); /* léger bleu */
+}
+.skill-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+.skill-title { font-weight:700; color:var(--primary-color); }
+.skill-sub { margin:0; opacity:.9; }
+
+.badge {
+  font-size:.75rem; padding:4px 8px; border-radius:999px; border:1px solid currentColor;
+}
+.badge-adv { color:#2563eb; }  /* Avancé */
+.badge-int { color:#0ea5e9; }  /* Intermédiaire */
+
+.skill-card { position: relative; }
+.skill-head { padding-right: 76px; }              /* laisse la place au badge */
+.badge { position: absolute; top: 16px; right: 16px; }
+
+.skills-grid { gap: 18px; }
+@media (max-width: 900px) {
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .skills-grid { grid-template-columns: 1fr; }
+  .skill-card { padding: 18px; }
+}
+
+.skill-card { display: flex; flex-direction: column; min-height: 140px; }
+.skill-sub { margin-top: auto; }
+
+.skills-cat {
+  font-weight: 700; letter-spacing: .2px;
+  margin: 36px auto 12px; color: var(--primary-color);
+}
+.skills-cat::after{
+  content:""; display:block; width:42px; height:2px;
+  background: var(--accent-color); border-radius:2px; margin-top:8px;
+}
+
+.skill-card { box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+.skill-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+}
+
+
+/* La grille – laisse comme avant si tu l’avais déjà */
+.skills-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* La carte ne change pas, on ajoute juste un contexte */
+.skill-card{
+  position:relative;
+}
+
+/* On libère de la place à gauche du titre pour l’icône */
+.skill-card .skill-title{
+  padding-left: 28px;      /* espace pour l’icône */
+  display:inline-block;
+  line-height: 1.2;
+}
+
+/* Pseudo-élément pour l’icône */
+.skill-card::before{
+  content:"";
+  position:absolute;
+  left:16px;
+  top:18px;                /* ajuste finement si besoin */
+  width:18px;
+  height:18px;
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+  opacity:0.95;
+}
+
+/* Mapping des icônes par carte */
+.skill--python::before     { background-image:url("./skills/python.png"); }
+.skill--r::before          { background-image:url("./skills/r.png"); }
+.skill--sql::before        { background-image:url("./skills/sql.png"); }
+.skill--dataviz::before    { background-image:url("./skills/dataviz.png"); }
+
+.skill--jira::before       { background-image:url("./skills/jira.png"); }
+.skill--office::before     { background-image:url("./skills/microsoft.png"); }
+.skill--github::before     { background-image:url("./skills/github.png"); }
+.skill--confluence::before { background-image:url("./skills/confluence.png"); }
+
+:root {
+  --skill-icon-size: 19px;
+  --skill-icon-left: 16px;
+  --skill-icon-top: 18px;
+}
+.skill-card::before {
+  width: var(--skill-icon-size);
+  height: var(--skill-icon-size);
+  left: var(--skill-icon-left);
+  top: var(--skill-icon-top);
+}
+
+
+
+        /* Header et Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 150px 5% 100px;
+            text-align: center;
+            margin-top: 70px; /* Pour compenser le header fixe */
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero .profession {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 1rem auto;
+            display: block;
+            border: 3px solid white;
+        }
+
+        .hero-photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  overflow: hidden;
+  margin: 80px auto 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+
+  /* image en fond + zoom */
+  background-image: url("./images/avatar-pro.png"); /* ton chemin */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 130%; /* 100% = taille normale, augmente pour zoomer */
+}
+
+
+        /* Sections générales */
+        section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+        
+        h2::after {
+  content:""; display:block; width:60px; height:1px; background:var(--accent-color);
+  margin:10px auto 0; border-radius:2px;}
+
+
+
+        /* Compétences */
+        .skills {
+            background-color: white;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .skill-item {
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .skill-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+
+        /* Projets */
+        .projects {
+            background-color: var(--secondary-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .project-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .project-card .date {
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .project-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .project-card li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        /* Projets - améliorations */
+.project-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.project-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #eef3ff;
+}
+
+.project-title {
+  margin: 0;
+  color: var(--primary-color);
+}
+
+.project-meta {
+  margin: 2px 0 0;
+  opacity: .8;
+  font-size: .95rem;
+}
+
+.project-badge {
+  margin-left: auto;
+  font-size: .75rem;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+.project-role {
+  margin: 10px 0 8px;
+  font-weight: 600;
+}
+
+.project-points {
+  margin: 0 0 10px 18px;
+}
+.project-points li {
+  margin-bottom: 6px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.project-tags span {
+  font-size: .8rem;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #f1f5ff;
+  color: #1e3a8a;
+  border: 1px solid rgba(30,58,138,.12);
+}
+
+.projects-grid{
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); /* avant 300px */
+}
+.project-title{
+  hyphens: auto;          /* coupure propre en FR */
+  line-height: 1.2;
+}
+
+.project-card{ position: relative; }
+.project-badge{
+  position: absolute; top: 14px; right: 14px;
+  font-size: .75rem; padding: 4px 8px; border-radius: 999px;
+  border: 1px solid var(--accent-color); color: var(--accent-color);
+  background: #fff;
+}
+
+.project-meta{
+  display: flex; flex-wrap: wrap; gap: 6px 10px;
+  opacity: .85; font-size: .95rem; margin: 2px 40px 0 0; /* espace laissé au badge */
+}
+.project-meta span::after{ content: "•"; margin: 0 6px; opacity:.5; }
+.project-meta span:last-child::after{ content: ""; }
+
+<p class="project-meta">
+  <span>Paris (75)</span><span>Projet académique</span><span>Janv–Mars 2024</span>
+</p>
+
+.project-points{ margin: 8px 0 10px 18px; }
+.project-points li{ margin-bottom: 8px; }
+
+.project-tags{ gap: 8px; margin-top: 10px; justify-content: flex-start; }
+.project-tags span{
+  font-size: .8rem; padding: 4px 10px; border-radius: 999px;
+  background: #f1f5ff; color: #1e3a8a; border: 1px solid rgba(30,58,138,.12);
+}
+
+/*réduire la hauteur et padding*/
+#home {
+  min-height: 90vh; /* au lieu de 100vh */
+  padding-top: 60px; /* ajoute un espace en haut */
+  padding-bottom: 50px; /* réduit l’espace bas */
+}
+
+
+
+/* En-tête des cartes projets */
+.project-head {
+  position: relative;
+  display: grid;
+  grid-template-columns: 60px 1fr;  /* un peu plus large pour mieux séparer logo et texte */
+  align-items: start;
+  column-gap: 16px;                /* espace horizontal plus grand */
+  margin-bottom: 0.5rem;
+}
+
+/* Logo */
+.project-logo {
+  width: 48px;                     /* taille légèrement augmentée */
+  height: 48px;
+  object-fit: contain;
+  margin-top: -7px;                 /* petit décalage vers le bas */
+  align-self: start;
+}
+
+
+/* Texte */
+.project-title {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+.project-meta {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+
+
+/* 1) La carte doit être un conteneur de position */
+.project-card {
+  position: relative; /* important pour que le badge s'aligne dans la carte */
+}
+
+/* 2) Badge dans l’angle supérieur droit */
+.project-badge {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  font-size: .75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  background: #fff;
+  z-index: 1;
+}
+
+/* 3) On laisse de la place à droite du titre pour éviter tout chevauchement */
+.project-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 90px; /* réserve l’espace du badge */
+}
+
+/* Responsive : on réduit un peu la réserve à droite sur mobile */
+@media (max-width: 520px) {
+  .project-head { padding-right: 72px; }
+}
+
+/* Couleurs spécifiques pour les badges */
+.badge--academic {
+  border-color: #2563eb;
+  color: #2563eb;
+  background: #fff;
+}
+
+.badge--memoire {
+  border-color: #137333;
+  color: #137333;
+  background: #e6f4ea;
+}
+
+
+.project-footer {
+  display: flex;
+  justify-content: flex-end; /* positionne à droite */
+  margin-top: 1rem;
+}
+
+.resume-link {
+  color: var(--primary-color);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.resume-link:hover {
+  color: #004aad; /* bleu plus foncé au survol */
+}
+
+.resume-link i {
+  margin-right: 6px;
+  color: #d32f2f;   /* rouge PDF */
+  font-size: 1rem;
+}
+
+.resume-link:hover i {
+  color: #ff0000;   /* rouge vif au survol */
+}
+
+
+
+      /* EXPERIENCES SECTION */
+.experience-section {
+  padding: 60px 20px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.experience-section h2 {
+  font-size: 2,2rem;
+  margin-bottom: 40px;
+  color: var(--primary-color, #1f4ed8);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  text-align: left;
+}
+
+.timeline-logo img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: white;
+  padding: 5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.timeline-content h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #1a1a1a;
+}
+
+.timeline-date {
+  font-size: 0.92rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+.timeline-role {
+  font-weight: 600;
+  color: #1a2e8f;
+  margin-bottom: 5px;
+}
+
+.timeline-desc {
+  font-size: 0.93rem;
+  color: #333;
+}
+
+
+
+
+
+        /* Contact */
+        .contact {
+            background-color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+/* Contact */
+.contact {
+  text-align: center;
+  padding: 72px 16px 96px;
+}
+.contact h2 {
+  font-size: 2.2rem;
+  color: var(--primary-color, #1f4ed8);
+  margin-bottom: 12px;
+}
+.contact-lead {
+  color: var(--text-muted, #5b5b6a);
+  margin-bottom: 24px;
+  font-size: 1.05rem;
+}
+.contact-actions {
+  display: inline-flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0 10px;
+}
+
+/* Boutons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn .ico {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Variantes */
+.btn-primary {
+  color: #fff;
+  background: var(--primary-color, #1f4ed8);
+  box-shadow: 0 4px 14px rgba(31,78,216,.18);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(31,78,216,.22);
+}
+
+.btn-outline {
+  color: var(--primary-color, #1f4ed8);
+  background: #fff;
+  border-color: rgba(31,78,216,.28);
+}
+.btn-outline:hover {
+  background: rgba(31,78,216,.06);
+  transform: translateY(-1px);
+}
+
+/* Note */
+.contact-note {
+  margin-top: 10px;
+  font-size: .95rem;
+  color: var(--text-muted, #6a6a78);
+}
+
+.cv-download {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn-cv {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1e3a8a; /* Bleu pro */
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-cv:hover {
+  background-color: #153075;
+  transform: translateY(-2px);
+}
+
+
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 50px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Masquer nav sur mobile, ou ajouter un burger menu si besoin */
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .profession {
+                font-size: 1.2rem;
+            }
+
+            section {
+                padding: 60px 3%;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+
+
+/* compense le header sticky pour tous les ancrages */
+section { scroll-margin-top: 90px; } /* adapte 90px à la hauteur réelle du header */
+html { scroll-behavior: smooth; }
+
+.exp-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;   /* évite les déformations */
+  border-radius: 12px;   /* optionnel pour adoucir */
+  background: #fff;      /* évite les halos sur fond gris */
+}
+
+h2 { 
+  margin-bottom: 2.2rem; /* ou 2rem pour compacter un peu */
+}
+h2::after { 
+  margin: 10px auto 0;   /* 10px au-dessus, 0 en-dessous → trait plus proche du titre */
+}
+
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  section { padding: 64px 5%; }
+}
+
+nav ul li a.active {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--accent-color);
+}
+
+@media (max-width: 600px) {
+  h1, h2 {
+    font-size: 1.8rem; /* réduit les titres */
+  }
+  header nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  section {
+    padding: 40px 20px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+}
+
+
+@media (max-width: 600px) {
+  section {
+    padding: 40px 5%;
+  }
+}
+
+/* ===========================
+   BREAKPOINT 1 — ≤ 992px (tablettes)
+   =========================== */
+@media (max-width: 992px) {
+  /* Titres plus souples */
+  h1 { font-size: clamp(1.8rem, 3vw, 2.2rem); }
+  h2 { font-size: clamp(1.4rem, 2.6vw, 1.8rem); }
+  section { padding: 60px 6%; }
+
+  /* Grilles plus respirantes */
+  .skills-grid {
+    gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  /* Cartes (projets/expériences) un peu plus larges */
+  .project-card, .xp-item, .skill-item {
+    padding: 1.1rem;
+  }
+}
+
+/* ===========================
+   BREAKPOINT 2 — ≤ 768px (petites tablettes / grands mobiles)
+   =========================== */
+@media (max-width: 768px) {
+  /* En-tête : compacter */
+  header { padding: 12px 5%; }
+  /* Si ton logo/titre de site est très long, on réduit un peu */
+  .site-title { font-size: 1.1rem; }
+
+  /* Hero (bandeau bleu) */
+  .hero { padding: 48px 5% 56px; }
+  .hero h1 { font-size: clamp(1.6rem, 5vw, 2rem); }
+  .hero .subtitle { font-size: 1rem; }
+  .hero .avatar { width: 140px; height: 140px; }
+
+  /* Titre de section + soulignement */
+  section { padding: 50px 6%; }
+  section h2 { margin-bottom: 1.2rem; }
+  section h2::after { margin: 10px auto 0; width: 56px; height: 2px; }
+
+  /* Compétences : 2 colonnes max */
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 1rem;
+  }
+  .skill-item h3 { margin-bottom: .25rem; }
+
+  /* Projets & Expériences : 2 colonnes -> 1 si pas assez de place */
+  .projects-grid, .xp-list {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+  .projects-grid > * { min-width: 0; }
+
+  /* Badges qui “wrap” joliment */
+  .project-tags, .xp-tags {
+    display: flex; flex-wrap: wrap; gap: .4rem .5rem;
+  }
+
+  /* Boutons (contact) un peu plus grands */
+  .btn, .contact-actions a { padding: .82rem 1.1rem; }
+}
+
+/* ===========================
+   BREAKPOINT 3 — ≤ 600px (mobiles)
+   =========================== */
+@media (max-width: 600px) {
+  /* Rythme global plus serré */
+  section { padding: 40px 5%; }
+  h1 { font-size: clamp(1.4rem, 6vw, 1.8rem); }
+  h2 { font-size: clamp(1.25rem, 4.6vw, 1.55rem); }
+  section h2::after { width: 52px; }
+
+  /* Grilles -> 1 colonne */
+  .skills-grid { grid-template-columns: 1fr; }
+  .projects-grid, .xp-list { grid-template-columns: 1fr; }
+
+  /* Cartes responsive */
+  .project-card, .xp-item, .skill-item { padding: 1rem; }
+
+  /* Logos entreprise plus petits */
+  .xp-logo, .project-logo {
+    width: 44px; height: 44px; flex: 0 0 44px;
+  }
+
+  /* Boutons pleine largeur (contact) */
+  .contact-actions {
+    display: grid; gap: .65rem;
+    grid-template-columns: 1fr;
+  }
+  .contact-actions .btn { width: 100%; text-align: center; }
+
+  /* Bandeau bleu (hero) */
+  .hero { padding: 36px 5% 44px; }
+  .hero .avatar { width: 120px; height: 120px; }
+  .hero .subtitle { font-size: .98rem; }
+}
+
+/* ===========================
+   BREAKPOINT 4 — ≤ 400px (petits mobiles)
+   =========================== */
+@media (max-width: 400px) {
+  section { padding: 34px 4.5%; }
+  h1 { font-size: 1.35rem; }
+  h2 { font-size: 1.18rem; }
+  section h2::after { width: 48px; }
+
+  /* Réduction fine des marges pour gagner de la place */
+  p { margin: .75rem 0; }
+  .skill-item, .project-card, .xp-item { padding: .9rem; }
+}
+
+
+/* Desktop : bouton caché */
+.nav-toggle { display: none; }
+
+/* Mobile : afficher le bouton et cacher le menu tant qu’il n’est pas ouvert */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    width: 40px; height: 40px;
+    border: 1px solid #dbe3f0; border-radius: 10px;
+    background: #fff; color: var(--primary-color);
+    margin-left: .5rem;
+  }
+  nav ul {
+    position: absolute; top: 64px; right: 5%;
+    background: #fff; border: 1px solid #e8eef6; border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    padding: .6rem; gap: .25rem;
+    display: none; flex-direction: column; min-width: 180px;
+  }
+  nav.is-open ul { display: flex; }
+  nav ul a { padding: .55rem .7rem; border-radius: 10px; }
+  nav ul a:hover { background: #f5f8ff; }
+}
+
+/* Desktop : burger caché */
+.nav-toggle { display: none; }
+
+/* Header basique (facultatif) */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 5%;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    border: 1px solid #dbe3f0; border-radius: 10px;
+    background: #fff; color: var(--primary-color);
+  }
+
+  /* Cacher le menu tant qu'il n'est pas ouvert */
+  header nav ul {
+    position: absolute;
+    top: 64px; right: 5%;
+    background: #fff;
+    border: 1px solid #e8eef6; border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    padding: .6rem; gap: .25rem;
+    min-width: 180px;
+    display: none;                 /* <-- important */
+    flex-direction: column;
+    z-index: 9999;                 /* passe devant le contenu */
+  }
+
+  /* Quand on ouvre */
+  header nav.is-open ul { display: flex; }
+
+  /* Liens */
+  header nav a {
+    display: block;
+    padding: .55rem .7rem;
+    border-radius: 10px;
+  }
+  header nav a:hover { background: #f5f8ff; }
+}
+
+
+/* --- header basique --- */
+.site-header {
+  position: sticky; top: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 20px; background: #fff; border-bottom: 1px solid #eef2f7;
+}
+
+.menu-toggle {           /* caché sur desktop */
+  display: none;
+  padding: 8px; border: 1px solid #e2e8f0; border-radius: 10px;
+  background: #fff; color: #1f3a8a; cursor: pointer;
+}
+
+.nav {                   /* nav desktop horizontal */
+  display: flex; gap: 20px;
+}
+
+.nav a { color: #1f3a8a; text-decoration: none; font-weight: 500; }
+.nav a.active { color: #1d4ed8; font-weight: 700; }
+
+/* --- mobile --- */
+@media (max-width: 768px) {
+  .menu-toggle { display: inline-flex; align-items:center; justify-content:center; }
+  .nav {
+    position: fixed; inset: 64px 0 0 0;    /* sous le header */
+    display: flex; flex-direction: column; gap: 12px;
+    background: #fff; padding: 16px 20px;
+    transform: translateY(-120%);          /* caché par défaut */
+    transition: transform .25s ease;
+    box-shadow: 0 16px 40px rgba(2, 6, 23, .08);
+  }
+  .nav.open { transform: translateY(0); }  /* affiché */
+  /* optionnel : désactiver le scroll quand le menu est ouvert */
+  .nav-open { overflow: hidden; }
+}
+
+
+
+
+/******************************************************** HTML **************************************************************************/
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">DOMNIC MACDONALD</div>
+            <button id="menuToggle" class="menu-toggle" aria-controls="siteNav" aria-expanded="false">
+    <span class="sr-only">Ouvrir le menu</span>
+    <!-- icône simple -->
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3 6h18M3 12h18M3 18h18"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+            <ul class="nav-links">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#experiences">Expériences</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-photo" aria-label="Photo de Dominic Macdonald"></div>
+        <h1>Domnic Macdonald</h1>
+        <p class="tagline">« — Allier stratégie et innovation pour transformer les données en leviers de performance durable — »</p>
+        <p class="profession">Consultant Data & Stratégie – spécialisé en digital et IA responsable</p>
+        <p>Passionné par la donnée et l’innovation, j’accompagne les entreprises dans la transformation digitale et la mise en œuvre de solutions IA responsables. Diplômé d’un Master en Droit, Économie et Gestion (mention Management Stratégique), parcours Stratégie Internationale & Intelligence Économique (Bac+5).</p>
+    </section>
+    
+
+
+<!-- Section À propos -->
+<section id="about" class="about">
+  <h2>À propos</h2>
+  <p>
+    Consultant en Data & Stratégie, je mets à profit mes compétences en analyse, innovation digitale et gestion de projet pour accompagner les entreprises dans leur transformation. 
+  </p>
+  <p>
+    Mon parcours en Stratégie Internationale et Intelligence Économique (Master 2, Université Paris 1 Panthéon-Sorbonne) m’a permis d’acquérir une vision à la fois stratégique et opérationnelle. 
+  </p>
+  <p>
+    Je m’intéresse particulièrement aux applications de l’IA responsable et aux leviers que la donnée peut offrir pour créer de la valeur durable et renforcer la prise de décision.
+  </p>
+</section>
+
+
+
+    <!-- Compétences -->
+    <section id="skills" class="skills">
+  <h2>Compétences Techniques</h2>
+
+  <!-- Catégorie -->
+  <h3 class="skills-cat">Data & Analytics</h3>
+  <div class="skills-grid">
+    <div class="skill-card skill--python">
+      <div class="skill-head">
+        <span class="skill-title">Python</span>
+        <span class="badge badge-adv">Avancé</span>
+      </div>
+      <p class="skill-sub">LangChain, Azure OpenAI, Pandas</p>
+    </div>
+
+    <div class="skill-card skill--r">
+      <div class="skill-head">
+        <span class="skill-title">R</span>
+        <span class="badge badge-int">Intermédiaire</span>
+      </div>
+      <p class="skill-sub">Analyse statistique</p>
+    </div>
+
+    <div class="skill-card skill--sql">
+      <div class="skill-head">
+        <span class="skill-title">SQL (MySQL)</span>
+        <span class="badge badge-int">Intermédiaire</span>
+      </div>
+      <p class="skill-sub">Modélisation, requêtes, jointures</p>
+    </div>
+
+    <div class="skill-card skill--dataviz">
+      <div class="skill-head">
+        <span class="skill-title">Data Visualization</span>
+        <span class="badge badge-int">Intermédiaire</span>
+      </div>
+      <p class="skill-sub">Power BI, Tableau</p>
+    </div>
+  </div>
+
+  <h3 class="skills-cat">Automatisation & Web</h3>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-head">
+        <span class="skill-title">Web Scraping</span>
+        <span class="badge badge-int">Intermédiaire</span>
+      </div>
+      <p class="skill-sub">Requests, BeautifulSoup (SEO : Semrush, Majestic)</p>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-head">
+        <span class="skill-title">Anonymisation</span>
+        <span class="badge badge-int">Intermédiaire</span>
+      </div>
+      <p class="skill-sub">Regex & filtres</p>
+    </div>
+  </div>
+
+  <h3 class="skills-cat">Gestion & Outils</h3>
+  <div class="skills-grid">
+    <div class="skill-card skill--jira">
+      <div class="skill-head">
+        <span class="skill-title">Jira</span>
+        <span class="badge badge-int">Intermédiaire</span>
+      </div>
+      <p class="skill-sub">Gestion de projets</p>
+    </div>
+
+    <div class="skill-card skill--office">
+      <div class="skill-head">
+        <span class="skill-title">Pack Office</span>
+        <span class="badge badge-adv">Avancé</span>
+      </div>
+      <p class="skill-sub">Excel, Word, PowerPoint</p>
+    </div>
+
+    <div class="skill-card skill--github">
+      <div class="skill-head">
+        <span class="skill-title">Git / GitHub</span>
+        <span class="badge badge-int">Intermédiaire</span>
+      </div>
+      <p class="skill-sub">Versionning, collaboration</p>
+    </div>
+
+    <div class="skill-card skill--confluence">
+      <div class="skill-head">
+        <span class="skill-title">Confluence</span>
+        <span class="badge badge-int">Intermédiaire</span>
+      </div>
+      <p class="skill-sub">Documentation, specs</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+    <!-- Projets -->
+    <section id="projects" class="projects">
+  <h2>Projets</h2>
+  <div class="projects-grid">
+
+    <!-- Projet 1 : Safran -->
+    <div class="project-card">
+      <div class="project-head">
+        <img class="project-logo" src="./images/safran.png" alt="Logo Safran">
+        <div>
+          <h3 class="project-title">Safran Aircraft Engines</h3>
+          <p class="project-meta">
+            Paris (75), France • Projet académique • 2024
+          </p>
+        </div>
+        <span class="project-badge badge--academic">Académique</span>
+      </div>
+      <p class="project-role">Rôle : Analyste stratégie RH & data</p>
+      <ul class="project-points">
+        <li>Mise en place d’une stratégie de recrutement basée sur les retours candidats/employés pour améliorer l’attraction et la fidélisation des talents.</li>
+        <li>Cartographie de mots-clés, analyse des réseaux et recommandations opérationnelles.</li>
+      </ul>
+      <div class="project-tags">
+        <span>Stratégie RH</span><span>Analyse de données</span><span>Cartographie</span><span>Recommandations</span>
+      </div>
+    </div>
+
+    <!-- Projet 2 : Alan Allman / Siderlog -->
+    <div class="project-card">
+      <div class="project-head">
+        <img class="project-logo" src="./images/alan-allman.png" alt="Logo Alan Allman Associates">
+        <div>
+          <h3 class="project-title">Alan Allman Associates / Siderlog</h3>
+          <p class="project-meta">
+            Paris (75), France • Projet académique • Janv–Fév 2024
+          </p>
+        </div>
+        <span class="project-badge badge--academic">Académique</span>
+      </div>
+      <p class="project-role">Rôle : Analyste due diligence (OSINT)</p>
+      <ul class="project-points">
+        <li>Due diligence pour le cabinet Siderlog avec utilisation d’outils OSINT pour l’analyse des processus KYC.</li>
+        <li>Collaboration avec les consultants pour évaluer les risques et fournir des recommandations stratégiques.</li>
+      </ul>
+      <div class="project-tags">
+        <span>OSINT</span><span>KYC</span><span>Analyse des risques</span><span>Due diligence</span>
+      </div>
+    </div>
+
+    <!-- Projet 3 : NoFilter -->
+    <div class="project-card">
+      <div class="project-head">
+        <img class="project-logo" src="./images/nofilter.png" alt="Logo NoFilter">
+        <div>
+          <h3 class="project-title">NoFilter (Startup – Valorisation des déchets agricoles)</h3>
+          <p class="project-meta">
+            Paris (75), France • Projet académique • 2023
+          </p>
+        </div>
+        <span class="project-badge badge--academic">Académique</span>
+      </div>
+      <p class="project-role">Rôle : Analyste stratégie internationale</p>
+      <ul class="project-points">
+        <li>Étude approfondie de la stratégie d’internationalisation d’une startup spécialisée dans la valorisation des déchets agricoles (fruits & légumes).</li>
+        <li>Évaluation de la faisabilité pour exporter le modèle d’affaire français vers des marchés étrangers sensibles à la durabilité.</li>
+        <li>Développement de compétences en stratégie internationale et collaboration en équipe.</li>
+      </ul>
+      <div class="project-tags">
+        <span>Analyse stratégique</span><span>Internationalisation</span><span>Durabilité</span><span>Agroalimentaire</span>
+      </div>
+    </div>
+
+    <!-- Projet 4 : Mémoire -->
+<div class="project-card">
+  <div class="project-head">
+    <img class="project-logo" src="./images/greennudge.png" alt="Mémoire Green Nudge">
+    <div>
+      <h3 class="project-title">Mémoire de fin d’études – Green Nudge</h3>
+      <p class="project-meta">
+        Université Paris 1 Panthéon-Sorbonne • Master 2 Stratégie Internationale & Intelligence Économique • 2024
+      </p>
+    </div>
+    <span class="project-badge badge--memoire">Mémoire</span>
+  </div>
+  <p class="project-role">Rôle : Chercheur / Analyste</p>
+  <ul class="project-points">
+    <li>Analyse de l’intégration des <strong>Green Nudges</strong> en entreprise pour promouvoir les comportements écologiques.</li>
+    <li>Évaluation de leur contribution à la gestion des <strong>risques environnementaux</strong> à l’échelle globale.</li>
+    <li>Méthodologie mixte : exploitation de rapports d’entreprise, données statistiques et revue académique.</li>
+    <li>Production d’un mémoire de <strong>80 pages</strong>, soutenu avec succès.</li>
+  </ul>
+  <div class="project-tags">
+    <span>Stratégie</span><span>Durabilité</span><span>Green Nudge</span><span>Gestion des risques</span><span>Recherche académique</span>
+  </div>
+  <div class="project-footer">
+  <a class="resume-link" href="./documents/memoire-green-nudge-résumé.pdf" target="_blank"> <i class="fa-solid fa-file-pdf"></i> 
+    Résumé PDF
+  </a>
+</div>
+</section>
+
+
+<!-- Section Expériences -->
+<section id="experiences" class="experience-section">
+  <h2>Expériences</h2>
+  <div class="timeline">
+
+    <!-- Expérience 1 -->
+    <div class="timeline-item">
+      <div class="timeline-logo">
+        <img src="./images/orange.png" alt="Orange Parnasse">
+      </div>
+      <div class="timeline-content">
+        <h3>Orange Parnasse</h3>
+        <p class="timeline-date">2024 – 2025</p>
+        <p class="timeline-role">AI Experimentation Officer (Stage)</p>
+        <p class="timeline-desc">
+          Développé un prototype IA pour CRM (Athéna) en générant automatiquement des e-mails et SMS avec LLM.
+        </p>
+      </div>
+    </div>
+
+    <!-- Expérience 2 -->
+    <div class="timeline-item">
+      <div class="timeline-logo">
+        <img src="./images/cfd.png" alt="CFD">
+      </div>
+      <div class="timeline-content">
+        <h3>Compagnie de Chemin de Fer Départementaux (CFD)</h3>
+        <p class="timeline-date">2023</p>
+        <p class="timeline-role">Assistant Chef de Projet Web (Stage)</p>
+        <p class="timeline-desc">
+          Optimisé le SEO d’Infflux (Semrush, Majestic), mené des analyses concurrentielles, rédigé du contenu web et réalisé des benchmarks digitaux.
+        </p>
+      </div>
+    </div>
+
+    <!-- Expérience 3 -->
+    <div class="timeline-item">
+      <div class="timeline-logo">
+        <img src="./images/rodin.png" alt="Groupe Rodin">
+      </div>
+      <div class="timeline-content">
+        <h3>Groupe Rodin</h3>
+        <p class="timeline-date">2022</p>
+        <p class="timeline-role">Assistant Gestionnaire de patrimoine (Stage)</p>
+        <p class="timeline-desc">
+          Prospecté par phoning, assuré le suivi client via CRM et soutenu la présentation de solutions d’assurance.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+  <h2>Contact</h2>
+  <p class="contact-lead">
+    Prêt à discuter de projets innovants ? Contactez-moi !
+  </p>
+
+  <div class="contact-actions">
+    <!-- Bouton Email direct -->
+    <a class="btn btn-primary"
+       href="mailto:macdonald.domnic@gmail.com?subject=Contact%20depuis%20le%20portfolio&body=Bonjour%20Dominic,%0A%0AJe%20vous%20contacte%20depuis%20votre%20portfolio.%0A%0A---"
+       aria-label="Envoyer un e-mail">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="ico">
+        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 
+                 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5Z" />
+      </svg>
+      Envoyer un e-mail
+    </a>
+
+    <!-- Bouton copier l'adresse -->
+    <button class="btn btn-outline" id="copyMail"
+            data-mail="macdonald.domnic@gmail.com" aria-live="polite">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="ico">
+        <path d="M16 1H4a2 2 0 0 0-2 2v12h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 
+                 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H8V7h11v14Z" />
+      </svg>
+      Copier l’adresse
+    </button>
+
+    <!-- Bouton LinkedIn -->
+    <a class="btn btn-outline"
+       href="https://www.linkedin.com/in/ton-profil" target="_blank" rel="noopener"
+       aria-label="Ouvrir mon profil LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="ico">
+        <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM0 8h5v15H0V8Zm7.5 0h4.8v2.06h.07c.67-1.27 
+                 2.3-2.6 4.73-2.6C21.4 7.46 24 9.7 24 14.07V23H19v-7.76c0-1.85-.03-4.22-2.57-4.22-2.58 0-2.98 2.01-2.98 4.09V23H7.5V8Z"/>
+      </svg>
+      LinkedIn
+    </a>
+  </div>
+
+<!-- Bouton CV -->
+  <div class="cv-download">
+  <a href="./documents/CV Domnic.pdf" target="_blank" class="btn-cv">
+    📝 Télécharger mon CV
+  </a>
+</div>
+
+
+  <p class="contact-note">Je réponds sous 24–48h.</p>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Domnic Macdonald. Tous droits réservés.</p>
+    </footer>
+
+    
+<script src="main.js"></script>
+</body>
+</html>
