@@ -814,29 +814,7 @@ nav a.active {
             margin-top: 50px;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none; /* Masquer nav sur mobile, ou ajouter un burger menu si besoin */
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero .profession {
-                font-size: 1.2rem;
-            }
-
-            section {
-                padding: 60px 3%;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
+        
 
 
 
@@ -1021,117 +999,84 @@ nav ul li a.active {
   .skill-item, .project-card, .xp-item { padding: .9rem; }
 }
 
+/* ====== MENU MOBILE basé sur #siteNav / #menuToggle / .nav-links ====== */
 
-/* Desktop : bouton caché */
-.nav-toggle { display: none; }
-
-/* Mobile : afficher le bouton et cacher le menu tant qu’il n’est pas ouvert */
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: inline-flex;
-    align-items: center; justify-content: center;
-    width: 40px; height: 40px;
-    border: 1px solid #dbe3f0; border-radius: 10px;
-    background: #fff; color: var(--primary-color);
-    margin-left: .5rem;
-  }
-  nav ul {
-    position: absolute; top: 64px; right: 5%;
-    background: #fff; border: 1px solid #e8eef6; border-radius: 14px;
-    box-shadow: 0 8px 24px rgba(0,0,0,.08);
-    padding: .6rem; gap: .25rem;
-    display: none; flex-direction: column; min-width: 180px;
-  }
-  nav.is-open ul { display: flex; }
-  nav ul a { padding: .55rem .7rem; border-radius: 10px; }
-  nav ul a:hover { background: #f5f8ff; }
-}
-
-/* Desktop : burger caché */
-.nav-toggle { display: none; }
-
-/* Header basique (facultatif) */
-.site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 5%;
-}
+/* Desktop : liens visibles, bouton caché (tu peux ajuster selon ton layout) */
+#siteNav .menu-toggle { display: none; }
+#siteNav .nav-links { display: flex; gap: 1rem; }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .nav-toggle {
-    display: inline-flex;
+  /* Container header/nav */
+  #siteNav {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    width: 40px; height: 40px;
-    border: 1px solid #dbe3f0; border-radius: 10px;
-    background: #fff; color: var(--primary-color);
+    justify-content: space-between;
+    padding: 12px 5%;
+    position: relative;
+    z-index: 1000;
   }
 
-  /* Cacher le menu tant qu'il n'est pas ouvert */
-  header nav ul {
-    position: absolute;
-    top: 64px; right: 5%;
+  /* Bouton burger visible */
+  #siteNav .menu-toggle {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    padding: .6rem .7rem;
+    border: 1px solid #e3e9ff;
     background: #fff;
-    border: 1px solid #e8eef6; border-radius: 14px;
-    box-shadow: 0 8px 24px rgba(0,0,0,.08);
-    padding: .6rem; gap: .25rem;
-    min-width: 180px;
-    display: none;                 /* <-- important */
-    flex-direction: column;
-    z-index: 9999;                 /* passe devant le contenu */
+    color: var(--primary-color);
+    border-radius: 10px;
+    cursor: pointer;
   }
 
-  /* Quand on ouvre */
-  header nav.is-open ul { display: flex; }
+  /* Menu masqué par défaut (overlay sous le header) */
+  #siteNav .nav-links {
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: #fff;
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .3s ease, opacity .3s ease;
+    border-top: 1px solid #eef2ff;
+    box-shadow: 0 16px 40px rgba(2,6,23,.08);
+  }
+
+  /* Menu ouvert quand #siteNav a .open (géré par JS) */
+  #siteNav.open .nav-links {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
 
   /* Liens */
-  header nav a {
+  #siteNav .nav-links a {
     display: block;
-    padding: .55rem .7rem;
+    padding: .8rem 1rem;
     border-radius: 10px;
   }
-  header nav a:hover { background: #f5f8ff; }
-}
-
-
-/* --- header basique --- */
-.site-header {
-  position: sticky; top: 0; z-index: 1000;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 12px 20px; background: #fff; border-bottom: 1px solid #eef2f7;
-}
-
-.menu-toggle {           /* caché sur desktop */
-  display: none;
-  padding: 8px; border: 1px solid #e2e8f0; border-radius: 10px;
-  background: #fff; color: #1f3a8a; cursor: pointer;
-}
-
-.nav {                   /* nav desktop horizontal */
-  display: flex; gap: 20px;
-}
-
-.nav a { color: #1f3a8a; text-decoration: none; font-weight: 500; }
-.nav a.active { color: #1d4ed8; font-weight: 700; }
-
-/* --- mobile --- */
-@media (max-width: 768px) {
-  .menu-toggle { display: inline-flex; align-items:center; justify-content:center; }
-  .nav {
-    position: fixed; inset: 64px 0 0 0;    /* sous le header */
-    display: flex; flex-direction: column; gap: 12px;
-    background: #fff; padding: 16px 20px;
-    transform: translateY(-120%);          /* caché par défaut */
-    transition: transform .25s ease;
-    box-shadow: 0 16px 40px rgba(2, 6, 23, .08);
+  #siteNav .nav-links a:hover {
+    background: #f5f8ff;
   }
-  .nav.open { transform: translateY(0); }  /* affiché */
-  /* optionnel : désactiver le scroll quand le menu est ouvert */
-  .nav-open { overflow: hidden; }
+
+  /* Cacher les liens en ligne (desktop) */
+  #siteNav .nav-links:not(.open) {
+    /* l’état fermée est géré par transform/opacité ci-dessus,
+       on laisse la règle pour mémoire */
+  }
 }
 
+/* Très petits écrans */
+@media (max-width: 480px) {
+  #siteNav .logo { font-size: .95rem; }
+  #siteNav .nav-links a { font-size: .95rem; }
+}
 
 
 

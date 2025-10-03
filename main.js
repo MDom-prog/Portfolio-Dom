@@ -58,35 +58,30 @@ sections.forEach(sec => observer.observe(sec));
 })();
 
 /* ==========================
-   Menu burger (optionnel)
+   Menu burger (unique et propre)
    ========================== */
 (() => {
-  // Adapte ces sélecteurs à ton HTML
   const btn = document.getElementById('menuToggle'); // bouton burger
   const nav = document.getElementById('siteNav');    // conteneur <nav>
   if (!btn || !nav) return;
 
-  btn.addEventListener('click', () => {
-    nav.classList.toggle('open');
-    document.documentElement.classList.toggle('nav-open');
-  });
-})();
-
-(() => {
-  const btn = document.getElementById('menuToggle'); // bouton burger
-  const nav = document.getElementById('siteNav');    // nav
-  if (!btn || !nav) return;
-
-  btn.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
+  const toggle = (force) => {
+    const isOpen = typeof force === 'boolean' ? force : !nav.classList.contains('open');
+    nav.classList.toggle('open', isOpen);
     btn.setAttribute('aria-expanded', String(isOpen));
     document.documentElement.classList.toggle('nav-open', isOpen);
+  };
+
+  // Ouvre/ferme au clic
+  btn.addEventListener('click', () => toggle());
+
+  // Ferme avec Échap
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') toggle(false);
+  });
+
+  // Sécurité : si on repasse en desktop, on ferme le menu mobile
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) toggle(false);
   });
 })();
-
-
-const nav = document.getElementById('siteNav');
-if (nav) nav.classList.remove('open');
-document.documentElement.classList.remove('nav-open');
-
-
