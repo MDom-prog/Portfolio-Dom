@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domnic Macdonald — Consultant Data & IA</title>
+<meta name="description" content="Consultant Data & IA junior. Agents conversationnels, RAG et automatisation n8n. M2 Stratégie Internationale & Intelligence Économique, Paris 1 Panthéon-Sorbonne.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root{
+  --bg:#F7F7F4;
+  --surface:#FFFFFF;
+  --surface-alt:#EFEFEA;
+  --ink:#111111;
+  --ink-soft:#4A4A46;
+  --accent:#FF5A1F;
+  --line:#111111;
+  --line-soft:#DCDCD6;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Bricolage Grotesque",system-ui,sans-serif;
+  font-weight:400;
+  line-height:1.6;
+}
+img{ max-width:100%; display:block; }
+.wrap{ max-width:1180px; margin:0 auto; padding:0 1.5rem; }
+h1,h2,h3{
+  font-family:"Bricolage Grotesque",sans-serif; font-weight:800; text-transform:uppercase;
+  letter-spacing:-.02em; margin:0;
+}
+p{ margin:0 0 1rem; }
+a{ color:inherit; }
+
+/* ============ HEADER / NAV ============ */
+header{
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  background:var(--ink); border-bottom:2px solid var(--ink);
+}
+#siteNav{
+  display:flex; align-items:center; justify-content:space-between;
+  max-width:1180px; margin:0 auto; padding:.9rem 1.5rem;
+}
+.logo{
+  font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:1rem;
+  color:var(--bg); letter-spacing:.02em;
+}
+.menu-toggle{
+  display:inline-flex; align-items:center; justify-content:center;
+  background:var(--bg); color:var(--ink); border:2px solid var(--bg);
+  padding:.45rem .65rem; font-size:1rem; cursor:pointer;
+}
+#siteNav .nav-links{
+  position:fixed; top:52px; left:0; right:0;
+  background:var(--ink); list-style:none; margin:0; padding:1rem 1.5rem;
+  display:flex; flex-direction:column; gap:.25rem;
+  transform:translateY(-8px); opacity:0; pointer-events:none;
+  transition:transform .25s ease, opacity .25s ease;
+  border-top:2px solid var(--bg);
+}
+#siteNav.open .nav-links{ transform:translateY(0); opacity:1; pointer-events:auto; }
+#siteNav .nav-links a{
+  display:block; padding:.7rem .4rem;
+  font-family:"Space Mono",monospace; font-size:.8rem; text-transform:uppercase; letter-spacing:.04em;
+  color:var(--bg); text-decoration:none; border-bottom:1px solid rgba(247,247,244,.14);
+}
+#siteNav .nav-links a.active{ color:var(--accent); }
+@media (min-width:769px){
+  .menu-toggle{ display:none; }
+  #siteNav .nav-links{
+    position:static; display:flex; flex-direction:row; gap:1.6rem;
+    transform:none; opacity:1; pointer-events:auto; padding:0; border:0; background:transparent;
+  }
+  #siteNav .nav-links a{ padding:.3rem 0; border-bottom:2px solid transparent; }
+  #siteNav .nav-links a:hover{ border-color:var(--accent); }
+  #siteNav .nav-links a.active{ border-color:var(--accent); }
+}
+
+/* ============ SECTIONS (generic) ============ */
+section{ padding:5.5rem 0; scroll-margin-top:76px; }
+section h2{ font-size:clamp(1.7rem,3.4vw,2.4rem); margin-bottom:.5rem; }
+.section-rule{ width:64px; height:5px; background:var(--accent); margin-bottom:2.2rem; }
+.on-dark{ background:var(--ink); color:var(--bg); }
+.on-alt{ background:var(--surface-alt); }
+
+/* ============ HERO ============ */
+.hero{ background:var(--ink); color:var(--bg); padding:9rem 0 4.5rem; }
+.hero-grid{ display:grid; grid-template-columns:1.4fr 1fr; gap:2.5rem; align-items:start; }
+.status-block{
+  display:inline-block; font-family:"Space Mono",monospace; font-weight:700; font-size:.72rem;
+  letter-spacing:.03em; text-transform:uppercase; background:var(--accent); color:var(--ink);
+  padding:.4rem .7rem; margin-bottom:1.6rem;
+}
+.hero h1{ font-size:clamp(2.4rem,6vw,4.2rem); line-height:1.05; margin-bottom:1.2rem; }
+.hero h1 .pop{ background:var(--accent); color:var(--ink); padding:0 .15em; }
+.hero-profession{
+  font-family:"Bricolage Grotesque",sans-serif; font-weight:700; text-transform:uppercase;
+  font-size:1.05rem; letter-spacing:.01em; margin-bottom:1rem;
+}
+.hero-tagline{
+  font-family:"Space Mono",monospace; font-size:.95rem; color:#C9C9C4;
+  max-width:46ch; margin-bottom:1.8rem; line-height:1.6;
+}
+.hero-cta{ display:flex; gap:.8rem; flex-wrap:wrap; }
+.btn{
+  font-family:"Space Mono",monospace; font-weight:700; font-size:.82rem; text-transform:uppercase;
+  letter-spacing:.02em; padding:.75rem 1.2rem; text-decoration:none; display:inline-flex;
+  align-items:center; gap:.5rem; border:2px solid var(--ink); cursor:pointer; background:none;
+}
+.btn-solid{ background:var(--accent); color:var(--ink); border-color:var(--accent); }
+.btn-outline-dark{ background:transparent; color:var(--bg); border-color:var(--bg); }
+.btn-outline-light{ background:transparent; color:var(--ink); border-color:var(--ink); }
+.btn-solid-ink{ background:var(--ink); color:var(--bg); border-color:var(--ink); }
+.btn:hover{ transform:translate(-2px,-2px); box-shadow:4px 4px 0 var(--accent); }
+.btn-outline-dark:hover{ box-shadow:4px 4px 0 var(--bg); }
+
+.hero-photo{
+  width:100%; aspect-ratio:1/1; border:3px solid var(--bg);
+  box-shadow:10px 10px 0 var(--accent);
+  background-image:url("./images/avatar-pro.png"); background-position:center;
+  background-repeat:no-repeat; background-size:140%;
+  justify-self:end; max-width:280px;
+}
+@media (max-width:768px){
+  .hero{ padding:7rem 0 3rem; }
+  .hero-grid{ grid-template-columns:1fr; }
+  .hero-photo{ max-width:200px; justify-self:start; order:-1; margin-bottom:1.5rem; }
+}
+
+/* ============ ABOUT ============ */
+.about-body{ max-width:68ch; font-size:1rem; }
+.about-callout{
+  border:2px solid var(--ink); background:var(--surface); padding:1.4rem 1.6rem;
+  margin-top:1.6rem; max-width:68ch; box-shadow:6px 6px 0 var(--accent);
+}
+.about-callout p{ margin:0; font-weight:600; }
+
+/* ============ SKILLS ============ */
+.skills-cat{
+  font-family:"Bricolage Grotesque",sans-serif; font-weight:700; text-transform:uppercase;
+  font-size:1rem; margin:2.4rem 0 1rem;
+}
+.skills-cat:first-of-type{ margin-top:0; }
+.skills-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1rem; }
+.skill-block{
+  border:2px solid var(--ink); background:var(--surface); padding:1.1rem 1.2rem;
+  display:flex; flex-direction:column; gap:.5rem; position:relative;
+}
+.skill-block-head{ display:flex; align-items:center; gap:.6rem; }
+.skill-icon{ width:22px; height:22px; object-fit:contain; flex:0 0 22px; }
+.skill-title{ font-family:"Bricolage Grotesque",sans-serif; font-weight:700; font-size:.95rem; }
+.skill-level{
+  font-family:"Space Mono",monospace; font-size:.65rem; text-transform:uppercase; letter-spacing:.03em;
+  padding:.2rem .45rem; border:1.5px solid var(--ink); align-self:flex-start;
+}
+.skill-level.adv{ background:var(--ink); color:var(--bg); }
+.skill-sub{ font-size:.82rem; color:var(--ink-soft); margin:0; }
+
+/* ============ PROJECTS ============ */
+.projects-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(380px,1fr)); gap:2rem; }
+.project-card{
+  position:relative;
+  border:2px solid var(--ink); background:var(--surface); padding:1.7rem;
+  display:flex; flex-direction:column; gap:.9rem;
+}
+.project-card.shadow-accent{ box-shadow:7px 7px 0 var(--accent); }
+.project-card.shadow-ink{ box-shadow:7px 7px 0 var(--ink); border-color:var(--accent); }
+.project-head{ display:flex; align-items:flex-start; gap:.9rem; padding-right:9.5rem; }
+.project-logo{ width:44px; height:44px; object-fit:contain; background:var(--surface-alt); border:2px solid var(--ink); padding:5px; flex:0 0 44px; }
+.project-title{ font-size:1.02rem; line-height:1.25; text-transform:none; letter-spacing:0; }
+.project-meta{
+  font-family:"Space Mono",monospace; font-size:.72rem; color:var(--ink-soft);
+  margin-top:.35rem; text-transform:uppercase; letter-spacing:.02em;
+}
+.project-badge{
+  position:absolute; top:-11px; right:-11px; z-index:2;
+  font-family:"Space Mono",monospace; font-size:.58rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:.01em; background:var(--ink); color:var(--bg); padding:.26rem .5rem;
+  border:2px solid var(--accent); white-space:nowrap; max-width:9rem;
+}
+.project-role{ font-weight:600; font-size:.92rem; margin:0; }
+.project-points{ margin:0; padding-left:1.1rem; font-size:.88rem; }
+.project-points li{ margin-bottom:.5rem; }
+.project-tags{ display:flex; flex-wrap:wrap; gap:.4rem; }
+.project-tags span{
+  font-family:"Space Mono",monospace; font-size:.68rem; border:1.4px solid var(--ink);
+  padding:.2rem .5rem;
+}
+.project-footer{ display:flex; gap:1.2rem; flex-wrap:wrap; margin-top:.2rem; }
+.project-link{ font-size:.85rem; font-weight:700; text-decoration:none; border-bottom:2px solid var(--accent); }
+.project-link i{ margin-right:.35rem; }
+@media (max-width:600px){
+  .project-card{ padding:1.2rem; }
+  .project-head{ padding-right:0; padding-top:2rem; }
+  .project-badge{
+    top:10px; right:10px; font-size:.55rem; letter-spacing:.01em;
+    padding:.22rem .45rem; border-width:1.5px;
+  }
+}
+
+/* ============ EXPERIENCES ============ */
+.timeline{ display:flex; flex-direction:column; gap:0; max-width:760px; }
+.timeline-item{
+  display:grid; grid-template-columns:64px 1fr; gap:1.3rem;
+  padding:1.6rem 0; border-top:2px solid var(--ink);
+}
+.timeline-item:last-child{ border-bottom:2px solid var(--ink); }
+.timeline-logo img{ width:56px; height:56px; object-fit:contain; border:2px solid var(--ink); background:var(--surface); padding:5px; }
+.timeline-content h3{ font-size:1.05rem; text-transform:none; letter-spacing:0; margin-bottom:.2rem; }
+.timeline-date{ font-family:"Space Mono",monospace; font-size:.75rem; color:var(--ink-soft); margin-bottom:.35rem; }
+.timeline-role{ font-weight:600; margin-bottom:.4rem; font-size:.92rem; }
+.timeline-desc{ font-size:.88rem; margin:0; color:var(--ink-soft); }
+
+/* ============ CONTACT ============ */
+.contact{ background:var(--ink); color:var(--bg); text-align:left; }
+.contact-lead{ max-width:52ch; color:#C9C9C4; }
+.contact-actions{ display:flex; flex-wrap:wrap; gap:.8rem; margin:1.6rem 0; }
+.contact-note{ font-family:"Space Mono",monospace; font-size:.8rem; color:#9A9A95; margin-top:1rem; }
+.cv-download{ margin-top:1.6rem; }
+.btn .ico{ width:16px; height:16px; fill:currentColor; }
+
+/* ============ FOOTER ============ */
+footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem; font-family:"Space Mono",monospace; font-size:.75rem; border-top:2px solid #2A2A2A; }
+
+/* ============ BACK TO TOP ============ */
+.back-to-top{
+  position:fixed; bottom:20px; right:20px; width:44px; height:44px;
+  border:2px solid var(--ink); background:var(--accent); color:var(--ink);
+  font-size:1.1rem; cursor:pointer; opacity:0; pointer-events:none;
+  transition:opacity .25s ease; z-index:999;
+}
+.back-to-top.show{ opacity:1; pointer-events:auto; }
+
+/* ============ REVEAL ============ */
+.reveal{ opacity:0; transform:translateY(24px); transition:opacity .5s ease, transform .5s ease; }
+.reveal.is-visible{ opacity:1; transform:none; }
+@media (prefers-reduced-motion:reduce){
+  .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+  html{ scroll-behavior:auto; }
+}
+
+@media (max-width:600px){
+  section{ padding:3.5rem 0; }
+  .hero{ padding:6.5rem 0 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav id="siteNav">
+    <div class="logo">DOMNIC MACDONALD</div>
+    <button id="menuToggle" class="menu-toggle" aria-controls="siteNav" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li><a href="#home">Accueil</a></li>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#skills">Compétences</a></li>
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#experiences">Expériences</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="status-block">En recherche active : CDI, CDD ou VIE</span>
+      <h1>DOMNIC<br><span class="pop">MACDONALD</span></h1>
+      <p class="hero-profession">Consultant Data & IA. De la stratégie au prototype.</p>
+      <p class="hero-tagline">« Allier stratégie et innovation pour transformer les données en leviers de performance durable »</p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="#projects">Voir mes projets</a>
+        <a class="btn btn-outline-dark" href="#contact">Me contacter</a>
+      </div>
+    </div>
+    <div class="hero-photo" aria-label="Photo de Domnic Macdonald"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <h2>À propos</h2>
+    <div class="section-rule"></div>
+    <div class="about-body">
+      <p>Consultant en Strategy Data & IA appliquée, je mets à profit mes compétences en analyse, pilotage de projet et innovation numérique pour accompagner les entreprises dans leur transformation.</p>
+      <p>Mon parcours en Stratégie Internationale et Intelligence Économique (Master 2, Université Paris 1 Panthéon-Sorbonne) m'a permis de développer une vision globale reliant performance économique, data et innovation responsable.</p>
+      <p>Passionné par la valorisation des données et l'intelligence artificielle, je m'intéresse particulièrement à leurs applications concrètes dans la transformation des organisations, avec l'ambition de créer de la valeur durable et de renforcer la prise de décision grâce à des solutions data-driven.</p>
+      <div class="about-callout">
+        <p>Je recherche aujourd'hui un poste de Consultant Junior Data & IA, Business Analyst IA ou Chef de Projet Data/IA, en CDI, CDD ou VIE.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="on-alt">
+  <div class="wrap">
+    <h2>Compétences Techniques</h2>
+    <div class="section-rule"></div>
+
+    <h3 class="skills-cat">Data & Analytics</h3>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <div class="skill-block-head"><img class="skill-icon" src="./skills/python.png" alt=""><span class="skill-title">Python</span></div>
+        <span class="skill-level adv">Avancé</span>
+        <p class="skill-sub">LangChain, Azure OpenAI, Pandas</p>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-head"><img class="skill-icon" src="./skills/r.png" alt=""><span class="skill-title">R</span></div>
+        <span class="skill-level adv">Avancé</span>
+        <p class="skill-sub">Analyse statistique</p>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-head"><img class="skill-icon" src="./skills/sql.png" alt=""><span class="skill-title">MySQL</span></div>
+        <span class="skill-level">Intermédiaire</span>
+        <p class="skill-sub">Modélisation, requêtes, jointures</p>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-head"><img class="skill-icon" src="./skills/dataviz.png" alt=""><span class="skill-title">Data Visualization</span></div>
+        <span class="skill-level adv">Avancé</span>
+        <p class="skill-sub">Power BI, Tableau</p>
+      </div>
+    </div>
+
+    <h3 class="skills-cat">IA Générative & Agents</h3>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <div class="skill-block-head"><img class="skill-icon" src="./skills/prompt-engineering.png" alt=""><span class="skill-title">Prompt Engineering</span></div>
+        <span class="skill-level adv">Avancé</span>
+        <p class="skill-sub">System prompts, garde-fous anti-hallucination, itération</p>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-head"><img class="skill-icon" src="./skills/rag.png" alt=""><span class="skill-title">RAG</span></div>
+        <span class="skill-level">Intermédiaire</span>
+        <p class="skill-sub">n8n, embeddings, bases de connaissance</p>
+      </div>
+    </div>
+
+    <h3 class="skills-cat">Automatisation & Web</h3>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <div class="skill-block-head"><img class="skill-icon" src="./skills/webscraping.png" alt=""><span class="skill-title">Web Scraping</span></div>
+        <span class="skill-level adv">Avancé</span>
+        <p class="skill-sub">Requests, BeautifulSoup (SEO : Semrush, Majestic)</p>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-head"><img class="skill-icon" src="./skills/anonymisation.png" alt=""><span class="skill-title">Anonymisation</span></div>
+        <span class="skill-level">Intermédiaire</span>
+        <p class="skill-sub">Regex & filtres</p>
+      </div>
+    </div>
+
+    <h3 class="skills-cat">Gestion & Outils</h3>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <div class="skill-block-head"><img class="skill-icon" src="./skills/jira.png" alt=""><span class="skill-title">Jira</span></div>
+        <span class="skill-level">Intermédiaire</span>
+        <p class="skill-sub">Gestion de projets</p>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-head"><img class="skill-icon" src="./skills/confluence.png" alt=""><span class="skill-title">Confluence</span></div>
+        <span class="skill-level">Intermédiaire</span>
+        <p class="skill-sub">Documentation, specs</p>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-head"><img class="skill-icon" src="./skills/microsoft.png" alt=""><span class="skill-title">Pack Office</span></div>
+        <span class="skill-level adv">Avancé</span>
+        <p class="skill-sub">Word, Excel, PowerPoint</p>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-head"><img class="skill-icon" src="./skills/github.png" alt=""><span class="skill-title">Git / GitHub</span></div>
+        <span class="skill-level adv">Avancé</span>
+        <p class="skill-sub">Versionning, collaboration</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <h2>Projets</h2>
+    <div class="section-rule"></div>
+    <div class="projects-grid">
+
+      <div class="project-card shadow-accent">
+        <div class="project-head">
+          <img class="project-logo" src="./images/AI.png" alt="Logo AI">
+          <div>
+            <h3 class="project-title">Agent IA de Gestion d'Emails</h3>
+            <p class="project-meta">Paris (75), France · Projet personnel · 2026</p>
+          </div>
+          <span class="project-badge">Entrepreneurial</span>
+        </div>
+        <p class="project-role">Concepteur & implémenteur d'Agents IA métier</p>
+        <ul class="project-points">
+          <li>Conception d'un agent IA qui analyse les emails entrants, récupère le contexte du thread et rédige une réponse prête à valider, sans envoi automatique (Human-in-the-Loop).</li>
+          <li>Formalisation de règles métier : ton & style, réponses « support », exclusions (newsletters / no-reply), priorisation, gestion des exceptions, et garde-fous (pas d'informations inventées / demander une information manquante).</li>
+          <li>Orchestration via n8n (trigger, filtres, LLM, génération, création de brouillons Gmail, logs/alertes) avec un mode human-in-the-loop garantissant un contrôle total avant envoi.</li>
+        </ul>
+        <div class="project-tags">
+          <span>IA générative</span><span>Automatisation</span><span>Process métier</span><span>Workflow</span><span>n8n</span><span>LLM</span><span>JavaScript</span><span>Gouvernance IA</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://inbox-concierge-pro.lovable.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i>Voir le site et la démo</a>
+          <a class="project-link" href="https://github.com/MDom-prog/email-copilot-support-client" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i>Voir le code sur GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card shadow-ink">
+        <div class="project-head">
+          <img class="project-logo" src="./images/agent-photographe.png" alt="Logo Agent Commercial Photographe">
+          <div>
+            <h3 class="project-title">Agent Commercial IA, Concierge Photographe Mariage</h3>
+            <p class="project-meta">Paris (75), France · Projet personnel · 2026</p>
+          </div>
+          <span class="project-badge">Personnel</span>
+        </div>
+        <p class="project-role">Concepteur & implémenteur d'agent IA conversationnel</p>
+        <ul class="project-points">
+          <li>Agent conversationnel n8n qui qualifie les prospects, vérifie une vraie disponibilité sur Google Calendar et réserve un appel découverte, avec garde-fous anti-hallucination sur les prix et les disponibilités.</li>
+          <li>RAG sur une base de connaissance (formules, tarifs, FAQ), enregistrement des leads dans un Google Sheet, email de confirmation automatique.</li>
+        </ul>
+        <div class="project-tags">
+          <span>IA générative</span><span>RAG</span><span>n8n</span><span>Automatisation</span><span>Agent conversationnel</span><span>Google Calendar</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://github.com/MDom-prog/agent-conversationnel-photographe" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i>Voir le code sur GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card shadow-accent">
+        <div class="project-head">
+          <img class="project-logo" src="./images/safran.png" alt="Logo Safran">
+          <div>
+            <h3 class="project-title">Safran Aircraft Engines</h3>
+            <p class="project-meta">Paris (75), France · Projet académique · 2024</p>
+          </div>
+          <span class="project-badge">Académique</span>
+        </div>
+        <p class="project-role">Rôle : Analyste stratégie Data & RH</p>
+        <ul class="project-points">
+          <li>Analyse des retours candidats et employés (Glassdoor, Indeed) afin d'identifier les leviers d'attractivité, de satisfaction et de rétention des talents multigénérationnels.</li>
+          <li>Mise en œuvre de techniques d'analyse textuelle (mots-clés, analyse factorielle, regroupements) pour faire émerger les thèmes clés et les perceptions associées à Safran et à ses concurrents.</li>
+          <li>Benchmark des pratiques RH du secteur et formulation de recommandations opérationnelles en matière de marque employeur, diversité, flexibilité et développement des talents.</li>
+        </ul>
+        <div class="project-tags">
+          <span>Stratégie RH</span><span>Analyse de données</span><span>Text mining</span><span>Benchmark</span><span>Cartographie</span><span>Recommandations</span>
+        </div>
+      </div>
+
+      <div class="project-card shadow-ink">
+        <div class="project-head">
+          <img class="project-logo" src="./images/alan-allman.png" alt="Logo Alan Allman Associates">
+          <div>
+            <h3 class="project-title">Alan Allman Associates / Siderlog</h3>
+            <p class="project-meta">Paris (75), France · Projet académique · 2024</p>
+          </div>
+          <span class="project-badge">Académique</span>
+        </div>
+        <p class="project-role">Rôle : Analyste stratégie & due diligence (OSINT)</p>
+        <ul class="project-points">
+          <li>Réalisation d'une due diligence complète (OSINT, stratégique, organisationnelle, financière, concurrentielle et réputationnelle) dans le cadre d'un projet de rachat d'un cabinet de conseil.</li>
+          <li>Analyse des risques, du positionnement, des offres, de la gouvernance, des talents clés, de la performance financière et de l'environnement concurrentiel.</li>
+          <li>Élaboration d'une synthèse décisionnelle structurée (SWOT, matrice de décision) puis contribution à une recommandation d'investissement structurée (« Go sous conditions ») en collaboration avec des consultants.</li>
+        </ul>
+        <div class="project-tags">
+          <span>OSINT</span><span>KYC</span><span>M&A</span><span>Stratégie d'entreprise</span><span>Analyse des risques</span><span>Due diligence</span>
+        </div>
+      </div>
+
+      <div class="project-card shadow-accent">
+        <div class="project-head">
+          <img class="project-logo" src="./images/nofilter.png" alt="Logo NoFilter">
+          <div>
+            <h3 class="project-title">NoFilter (Startup, valorisation des déchets agricoles)</h3>
+            <p class="project-meta">Paris (75), France · Projet académique · 2023</p>
+          </div>
+          <span class="project-badge">Académique</span>
+        </div>
+        <p class="project-role">Rôle : Analyste stratégie internationale</p>
+        <ul class="project-points">
+          <li>Étude approfondie de la stratégie d'internationalisation d'une startup spécialisée dans la valorisation des déchets agricoles (fruits & légumes).</li>
+          <li>Évaluation de la faisabilité pour exporter le modèle d'affaire français vers des marchés étrangers sensibles à la durabilité.</li>
+          <li>Développement de compétences en stratégie internationale et collaboration en équipe.</li>
+        </ul>
+        <div class="project-tags">
+          <span>Analyse stratégique</span><span>Internationalisation</span><span>Durabilité</span><span>Agroalimentaire</span>
+        </div>
+      </div>
+
+      <div class="project-card shadow-ink">
+        <div class="project-head">
+          <img class="project-logo" src="./images/greennudge.png" alt="Mémoire Green Nudge">
+          <div>
+            <h3 class="project-title">Mémoire de fin d'études, Green Nudge</h3>
+            <p class="project-meta">Paris 1 Panthéon-Sorbonne · M2 Stratégie Internationale & IE · 2023-2024</p>
+          </div>
+          <span class="project-badge">Mémoire</span>
+        </div>
+        <p class="project-role">Rôle : Chercheur / Analyste</p>
+        <ul class="project-points">
+          <li>Analyse de l'intégration des <strong>Green Nudges</strong> en entreprise pour promouvoir les comportements écologiques.</li>
+          <li>Évaluation de leur contribution à la gestion des <strong>risques environnementaux</strong> à l'échelle globale.</li>
+          <li>Méthodologie mixte : exploitation de rapports d'entreprise, données statistiques et revue académique.</li>
+          <li>Production d'un mémoire de <strong>80 pages</strong>, soutenu avec succès.</li>
+        </ul>
+        <div class="project-tags">
+          <span>Stratégie</span><span>Durabilité</span><span>Green Nudge</span><span>Gestion des risques</span><span>Recherche académique</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="./documents/Présentation mémoire diaporama.pptx" target="_blank"><i class="fa-solid fa-file-powerpoint"></i>Présentation pptx</a>
+        </div>
+      </div>
+
+      <div class="project-card shadow-accent">
+        <div class="project-head">
+          <img class="project-logo" src="./images/Datascience.png" alt="Logo Datascience">
+          <div>
+            <h3 class="project-title">Analyse des grandes compagnies d'assurance mondiales</h3>
+            <p class="project-meta">Paris (75), France · Projet personnel · 2023</p>
+          </div>
+          <span class="project-badge">Personnel</span>
+        </div>
+        <p class="project-role">Rôle : Analyste Data & Intelligence Économique</p>
+        <ul class="project-points">
+          <li>Analyse croisée de données financières et de discours publics de grandes compagnies d'assurance afin d'identifier les liens entre performance économique, communication et perception émotionnelle.</li>
+          <li>Traitement de données textuelles (nettoyage, extraction de mots-clés, analyse des sentiments et des émotions), analyse multivariée (ACM) et interprétation stratégique des résultats.</li>
+          <li>Élaboration de recommandations opérationnelles pour améliorer le positionnement, la communication et la perception des entreprises sur leur marché.</li>
+        </ul>
+        <div class="project-tags">
+          <span>Intelligence économique</span><span>Analyse de données</span><span>NLP</span><span>Analyse stratégique</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://github.com/MDom-prog/analyse-discours-assurance" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i>Voir le dépôt GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card shadow-ink">
+        <div class="project-head">
+          <img class="project-logo" src="./images/HearYou.png" alt="Logo HearYou">
+          <div>
+            <h3 class="project-title">HearYou, application de reconnaissance vocale pour personnes malentendantes</h3>
+            <p class="project-meta">Paris (75), France · Projet entrepreneurial académique · 2022-2023</p>
+          </div>
+          <span class="project-badge">Académique</span>
+        </div>
+        <p class="project-role">Rôle : Porteur de projet / Analyste produit & stratégie</p>
+        <ul class="project-points">
+          <li>Conception d'une idée de start-up visant à améliorer l'accessibilité et l'inclusion des personnes malentendantes grâce à une application mobile de transcription vocale en temps réel.</li>
+          <li>Définition de la proposition de valeur, du marché cible, du positionnement concurrentiel et du business model (abonnement, partenariats, freemium).</li>
+          <li>Création du business model, du site vitrine du projet et préparation d'un pitch présenté devant un public.</li>
+        </ul>
+        <div class="project-tags">
+          <span>Innovation sociale</span><span>Entrepreneuriat</span><span>Product thinking</span><span>Business model</span><span>Inclusion numérique</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section id="experiences" class="on-alt">
+  <div class="wrap">
+    <h2>Expériences</h2>
+    <div class="section-rule"></div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-logo"><img src="./images/orange.png" alt="Orange Parnasse"></div>
+        <div class="timeline-content">
+          <h3>Orange</h3>
+          <p class="timeline-date">2025</p>
+          <p class="timeline-role">AI Experimentation Officer (Stage)</p>
+          <p class="timeline-desc">Développé un prototype IA pour CRM en générant automatiquement des e-mails et SMS avec LLM.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-logo"><img src="./images/cfd.png" alt="CFD"></div>
+        <div class="timeline-content">
+          <h3>Compagnie de Chemin de Fer Départementaux (CFD)</h3>
+          <p class="timeline-date">2023</p>
+          <p class="timeline-role">Assistant Chef de Projet Digital (Stage)</p>
+          <p class="timeline-desc">Optimisé le SEO d'Infflux (Semrush, Majestic), mené des analyses concurrentielles, rédigé du contenu web et réalisé des benchmarks digitaux.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-logo"><img src="./images/rodin.png" alt="Groupe Rodin"></div>
+        <div class="timeline-content">
+          <h3>Groupe Rodin</h3>
+          <p class="timeline-date">2022</p>
+          <p class="timeline-role">Assistant Gestionnaire de Patrimoine (Stage)</p>
+          <p class="timeline-desc">Prospecté par phoning, assuré le suivi client via CRM et soutenu la présentation de solutions d'assurance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <div class="section-rule"></div>
+    <p class="contact-lead">Prêt à discuter de projets innovants ? Contactez-moi.</p>
+
+    <div class="contact-actions">
+      <a class="btn btn-solid" href="mailto:macdonald.domnic@gmail.com?subject=Contact%20depuis%20le%20portfolio&body=Bonjour%20Domnic,%0A%0AJe%20vous%20contacte%20depuis%20votre%20portfolio.%0A%0A---" aria-label="Envoyer un e-mail">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5Z"/></svg>
+        Envoyer un e-mail
+      </a>
+      <button class="btn btn-outline-dark" id="copyMail" data-mail="macdonald.domnic@gmail.com" aria-live="polite">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M16 1H4a2 2 0 0 0-2 2v12h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H8V7h11v14Z"/></svg>
+        Copier l'adresse
+      </button>
+      <a class="btn btn-outline-dark" href="https://www.linkedin.com/in/domnic-macdonald/" target="_blank" rel="noopener" aria-label="Ouvrir mon profil LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM0 8h5v15H0V8Zm7.5 0h4.8v2.06h.07c.67-1.27 2.3-2.6 4.73-2.6C21.4 7.46 24 9.7 24 14.07V23H19v-7.76c0-1.85-.03-4.22-2.57-4.22-2.58 0-2.98 2.01-2.98 4.09V23H7.5V8Z"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn btn-outline-dark" href="https://github.com/MDom-prog" target="_blank" rel="noopener" aria-label="Ouvrir mon profil GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56 0-.27-.01-1-.01-1.96-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.09 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+        GitHub
+      </a>
+    </div>
+
+    <div class="cv-download">
+      <a href="./documents/CV Domnic.pdf" target="_blank" class="btn btn-solid">Télécharger mon CV</a>
+    </div>
+
+    <p class="contact-note">Je réponds sous 24-48h.</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Domnic Macdonald. Tous droits réservés.</p>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="Retour en haut">↑</button>
+<script src="main.js"></script>
+</body>
+</html>
