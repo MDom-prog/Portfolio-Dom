@@ -236,9 +236,11 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
 .back-to-top{
   position:fixed; bottom:20px; right:20px; width:44px; height:44px;
   border:2px solid var(--ink); background:var(--accent); color:var(--ink);
-  font-size:1.1rem; cursor:pointer; opacity:0; pointer-events:none;
+  cursor:pointer; opacity:0; pointer-events:none;
   transition:opacity .25s ease; z-index:999;
+  display:flex; align-items:center; justify-content:center; padding:0;
 }
+.back-to-top svg{ width:18px; height:18px; display:block; }
 .back-to-top.show{ opacity:1; pointer-events:auto; }
 
 /* ============ REVEAL ============ */
@@ -648,7 +650,9 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
   <p>© 2026 Domnic Macdonald. Tous droits réservés.</p>
 </footer>
 
-<button id="backToTop" class="back-to-top" aria-label="Retour en haut">↑</button>
+<button id="backToTop" class="back-to-top" aria-label="Retour en haut">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l-8 8h5v8h6v-8h5z" fill="currentColor"/></svg>
+</button>
 <script src="main.js"></script>
 </body>
 </html>
