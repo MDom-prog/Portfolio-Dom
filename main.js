@@ -117,11 +117,11 @@ window.addEventListener('scroll', setActiveLinkOnScroll, { passive: true });
     try {
       await navigator.clipboard.writeText(email);
       const initial = btn.innerHTML;
-      btn.innerHTML = '✅ Copié !';
-      setTimeout(() => (btn.innerHTML = initial), 1600);
+      btn.innerHTML = (window.t ? window.t('copy-done') : '✅ Copié !');
+      setTimeout(() => { btn.innerHTML = initial; if(window.applyLang) window.applyLang(document.documentElement.lang); }, 1600);
     } catch (e) {
       // Fallback
-      prompt('Copiez l’adresse e-mail :', email);
+      prompt((window.t ? window.t('copy-prompt') : 'Copiez l’adresse e-mail :'), email);
     }
   });
 })();

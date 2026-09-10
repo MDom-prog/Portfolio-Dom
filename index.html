@@ -80,8 +80,21 @@ header{
   color:var(--bg); text-decoration:none; border-bottom:1px solid rgba(247,247,244,.14);
 }
 #siteNav .nav-links a.active{ color:var(--accent); }
+.nav-right{ display:flex; align-items:center; gap:.6rem; }
+.lang-switch{ display:flex; border:2px solid var(--bg); }
+.lang-btn{
+  font-family:"Space Mono",monospace; font-weight:700; font-size:.68rem; letter-spacing:.06em;
+  padding:.28rem .5rem; background:transparent; color:var(--bg);
+  border:0; cursor:pointer; line-height:1.2;
+}
+.lang-btn + .lang-btn{ border-left:2px solid var(--bg); }
+.lang-btn.is-on{ background:var(--accent); color:var(--ink); }
+.lang-btn:not(.is-on):hover{ background:rgba(247,247,244,.16); }
+
 @media (min-width:769px){
   .menu-toggle{ display:none; }
+  #siteNav .nav-links{ margin-left:auto; }
+  .nav-right{ margin-left:1.6rem; }
   #siteNav .nav-links{
     position:static; display:flex; flex-direction:row; gap:1.6rem;
     transform:none; opacity:1; pointer-events:auto; padding:0; border:0; background:transparent;
@@ -269,15 +282,21 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
 <header>
   <nav id="siteNav">
     <div class="logo">DOMNIC MACDONALD</div>
-    <button id="menuToggle" class="menu-toggle" aria-controls="siteNav" aria-expanded="false">☰</button>
     <ul class="nav-links">
-      <li><a href="#home">Accueil</a></li>
-      <li><a href="#about">À propos</a></li>
-      <li><a href="#skills">Compétences</a></li>
-      <li><a href="#projects">Projets</a></li>
-      <li><a href="#experiences">Expériences</a></li>
+      <li><a href="#home" data-i18n="nav-home">Accueil</a></li>
+      <li><a href="#about" data-i18n="nav-about">À propos</a></li>
+      <li><a href="#skills" data-i18n="nav-skills">Compétences</a></li>
+      <li><a href="#projects" data-i18n="nav-projects">Projets</a></li>
+      <li><a href="#experiences" data-i18n="nav-experiences">Expériences</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label="Langue / Language">
+        <button type="button" class="lang-btn is-on" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button id="menuToggle" class="menu-toggle" aria-controls="siteNav" aria-expanded="false">☰</button>
+    </div>
   </nav>
 </header>
 
@@ -285,13 +304,13 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
 <section id="home" class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="status-block">En recherche active : CDI, CDD ou VIE</span>
+      <span class="status-block" data-i18n="hero-status">En recherche active : CDI, CDD ou VIE</span>
       <h1>DOMNIC<br><span class="pop">MACDONALD</span></h1>
-      <p class="hero-profession">Consultant Data & IA. De la stratégie au prototype.</p>
-      <p class="hero-tagline">« Allier stratégie et innovation pour transformer les données en leviers de performance durable »</p>
+      <p class="hero-profession" data-i18n="hero-profession">Consultant Data & IA. De la stratégie au prototype.</p>
+      <p class="hero-tagline" data-i18n="hero-tagline">« Allier stratégie et innovation pour transformer les données en leviers de performance durable »</p>
       <div class="hero-cta">
-        <a class="btn btn-solid" href="#projects">Voir mes projets</a>
-        <a class="btn btn-outline-dark" href="#contact">Me contacter</a>
+        <a class="btn btn-solid" href="#projects" data-i18n="hero-cta-projects">Voir mes projets</a>
+        <a class="btn btn-outline-dark" href="#contact" data-i18n="hero-cta-contact">Me contacter</a>
       </div>
     </div>
     <div class="hero-photo" aria-label="Photo de Domnic Macdonald"></div>
@@ -301,14 +320,14 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
-    <h2>À propos</h2>
+    <h2 data-i18n="about-title">À propos</h2>
     <div class="section-rule"></div>
     <div class="about-body">
-      <p>Consultant en Strategy Data & IA appliquée, je mets à profit mes compétences en analyse, pilotage de projet et innovation numérique pour accompagner les entreprises dans leur transformation.</p>
-      <p>Mon parcours en Stratégie Internationale et Intelligence Économique (Master 2, Université Paris 1 Panthéon-Sorbonne) m'a permis de développer une vision globale reliant performance économique, data et innovation responsable.</p>
-      <p>Passionné par la valorisation des données et l'intelligence artificielle, je m'intéresse particulièrement à leurs applications concrètes dans la transformation des organisations, avec l'ambition de créer de la valeur durable et de renforcer la prise de décision grâce à des solutions data-driven.</p>
+      <p data-i18n="about-p1">Consultant en Strategy Data & IA appliquée, je mets à profit mes compétences en analyse, pilotage de projet et innovation numérique pour accompagner les entreprises dans leur transformation.</p>
+      <p data-i18n="about-p2">Mon parcours en Stratégie Internationale et Intelligence Économique (Master 2, Université Paris 1 Panthéon-Sorbonne) m'a permis de développer une vision globale reliant performance économique, data et innovation responsable.</p>
+      <p data-i18n="about-p3">Passionné par la valorisation des données et l'intelligence artificielle, je m'intéresse particulièrement à leurs applications concrètes dans la transformation des organisations, avec l'ambition de créer de la valeur durable et de renforcer la prise de décision grâce à des solutions data-driven.</p>
       <div class="about-callout">
-        <p>Je recherche aujourd'hui un poste de Consultant Junior Data & IA, Business Analyst IA ou Chef de Projet Data/IA, en CDI, CDD ou VIE.</p>
+        <p data-i18n="about-callout">Je recherche aujourd'hui un poste de Consultant Junior Data & IA, Business Analyst IA ou Chef de Projet Data/IA, en CDI, CDD ou VIE.</p>
       </div>
     </div>
   </div>
@@ -317,82 +336,82 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
 <!-- SKILLS -->
 <section id="skills" class="on-alt">
   <div class="wrap">
-    <h2>Compétences Techniques</h2>
+    <h2 data-i18n="skills-title">Compétences Techniques</h2>
     <div class="section-rule"></div>
 
     <h3 class="skills-cat">Data & Analytics</h3>
     <div class="skills-grid">
       <div class="skill-block">
         <div class="skill-block-head"><img class="skill-icon" src="./skills/python.png" alt=""><span class="skill-title">Python</span></div>
-        <span class="skill-level adv">Avancé</span>
+        <span class="skill-level adv" data-i18n="lvl-adv">Avancé</span>
         <p class="skill-sub">LangChain, Azure OpenAI, Pandas</p>
       </div>
       <div class="skill-block">
         <div class="skill-block-head"><img class="skill-icon" src="./skills/r.png" alt=""><span class="skill-title">R</span></div>
-        <span class="skill-level adv">Avancé</span>
-        <p class="skill-sub">Analyse statistique</p>
+        <span class="skill-level adv" data-i18n="lvl-adv">Avancé</span>
+        <p class="skill-sub" data-i18n="skill-r">Analyse statistique</p>
       </div>
       <div class="skill-block">
         <div class="skill-block-head"><img class="skill-icon" src="./skills/sql.png" alt=""><span class="skill-title">MySQL</span></div>
-        <span class="skill-level">Intermédiaire</span>
-        <p class="skill-sub">Modélisation, requêtes, jointures</p>
+        <span class="skill-level" data-i18n="lvl-int">Intermédiaire</span>
+        <p class="skill-sub" data-i18n="skill-sql">Modélisation, requêtes, jointures</p>
       </div>
       <div class="skill-block">
         <div class="skill-block-head"><img class="skill-icon" src="./skills/dataviz.png" alt=""><span class="skill-title">Data Visualization</span></div>
-        <span class="skill-level adv">Avancé</span>
+        <span class="skill-level adv" data-i18n="lvl-adv">Avancé</span>
         <p class="skill-sub">Power BI, Tableau</p>
       </div>
     </div>
 
-    <h3 class="skills-cat">IA Générative & Agents</h3>
+    <h3 class="skills-cat" data-i18n="cat-genai">IA Générative & Agents</h3>
     <div class="skills-grid">
       <div class="skill-block">
         <div class="skill-block-head"><img class="skill-icon" src="./skills/prompt-engineering.png" alt=""><span class="skill-title">Prompt Engineering</span></div>
-        <span class="skill-level adv">Avancé</span>
-        <p class="skill-sub">System prompts, garde-fous anti-hallucination, itération</p>
+        <span class="skill-level adv" data-i18n="lvl-adv">Avancé</span>
+        <p class="skill-sub" data-i18n="skill-pe">System prompts, garde-fous anti-hallucination, itération</p>
       </div>
       <div class="skill-block">
         <div class="skill-block-head"><img class="skill-icon" src="./skills/rag.png" alt=""><span class="skill-title">RAG</span></div>
-        <span class="skill-level">Intermédiaire</span>
-        <p class="skill-sub">n8n, embeddings, bases de connaissance</p>
+        <span class="skill-level" data-i18n="lvl-int">Intermédiaire</span>
+        <p class="skill-sub" data-i18n="skill-rag">n8n, embeddings, bases de connaissance</p>
       </div>
     </div>
 
-    <h3 class="skills-cat">Automatisation & Web</h3>
+    <h3 class="skills-cat" data-i18n="cat-auto">Automatisation & Web</h3>
     <div class="skills-grid">
       <div class="skill-block">
         <div class="skill-block-head"><img class="skill-icon" src="./skills/webscraping.png" alt=""><span class="skill-title">Web Scraping</span></div>
-        <span class="skill-level adv">Avancé</span>
-        <p class="skill-sub">Requests, BeautifulSoup (SEO : Semrush, Majestic)</p>
+        <span class="skill-level adv" data-i18n="lvl-adv">Avancé</span>
+        <p class="skill-sub" data-i18n="skill-scraping">Requests, BeautifulSoup (SEO : Semrush, Majestic)</p>
       </div>
       <div class="skill-block">
         <div class="skill-block-head"><img class="skill-icon" src="./skills/anonymisation.png" alt=""><span class="skill-title">Anonymisation</span></div>
-        <span class="skill-level">Intermédiaire</span>
-        <p class="skill-sub">Regex & filtres</p>
+        <span class="skill-level" data-i18n="lvl-int">Intermédiaire</span>
+        <p class="skill-sub" data-i18n="skill-anon">Regex & filtres</p>
       </div>
     </div>
 
-    <h3 class="skills-cat">Gestion & Outils</h3>
+    <h3 class="skills-cat" data-i18n="cat-tools">Gestion & Outils</h3>
     <div class="skills-grid">
       <div class="skill-block">
         <div class="skill-block-head"><img class="skill-icon" src="./skills/jira.png" alt=""><span class="skill-title">Jira</span></div>
-        <span class="skill-level">Intermédiaire</span>
-        <p class="skill-sub">Gestion de projets</p>
+        <span class="skill-level" data-i18n="lvl-int">Intermédiaire</span>
+        <p class="skill-sub" data-i18n="skill-jira">Gestion de projets</p>
       </div>
       <div class="skill-block">
         <div class="skill-block-head"><img class="skill-icon" src="./skills/confluence.png" alt=""><span class="skill-title">Confluence</span></div>
-        <span class="skill-level">Intermédiaire</span>
+        <span class="skill-level" data-i18n="lvl-int">Intermédiaire</span>
         <p class="skill-sub">Documentation, specs</p>
       </div>
       <div class="skill-block">
         <div class="skill-block-head"><img class="skill-icon" src="./skills/microsoft.png" alt=""><span class="skill-title">Pack Office</span></div>
-        <span class="skill-level adv">Avancé</span>
+        <span class="skill-level adv" data-i18n="lvl-adv">Avancé</span>
         <p class="skill-sub">Word, Excel, PowerPoint</p>
       </div>
       <div class="skill-block">
         <div class="skill-block-head"><img class="skill-icon" src="./skills/github.png" alt=""><span class="skill-title">Git / GitHub</span></div>
-        <span class="skill-level adv">Avancé</span>
-        <p class="skill-sub">Versionning, collaboration</p>
+        <span class="skill-level adv" data-i18n="lvl-adv">Avancé</span>
+        <p class="skill-sub" data-i18n="skill-git">Versionning, collaboration</p>
       </div>
     </div>
   </div>
@@ -401,7 +420,7 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
 <!-- PROJECTS -->
 <section id="projects">
   <div class="wrap">
-    <h2>Projets</h2>
+    <h2 data-i18n="projects-title">Projets</h2>
     <div class="section-rule"></div>
     <div class="projects-grid">
 
@@ -409,23 +428,23 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
         <div class="project-head">
           <img class="project-logo" src="./images/AI.png" alt="Logo AI">
           <div>
-            <h3 class="project-title">Agent IA de Gestion d'Emails</h3>
-            <p class="project-meta">Paris (75), France · Projet personnel · 2026</p>
+            <h3 class="project-title" data-i18n="p1-title">Agent IA de Gestion d'Emails</h3>
+            <p class="project-meta" data-i18n="meta-perso-2026">Paris (75), France · Projet personnel · 2026</p>
           </div>
           <span class="project-badge">Entrepreneurial</span>
         </div>
-        <p class="project-role">Concepteur & implémenteur d'Agents IA métier</p>
+        <p class="project-role" data-i18n="p1-role">Concepteur & implémenteur d'Agents IA métier</p>
         <ul class="project-points">
-          <li>Conception d'un agent IA qui analyse les emails entrants, récupère le contexte du thread et rédige une réponse prête à valider, sans envoi automatique (Human-in-the-Loop).</li>
-          <li>Formalisation de règles métier : ton & style, réponses « support », exclusions (newsletters / no-reply), priorisation, gestion des exceptions, et garde-fous (pas d'informations inventées / demander une information manquante).</li>
-          <li>Orchestration via n8n (trigger, filtres, LLM, génération, création de brouillons Gmail, logs/alertes) avec un mode human-in-the-loop garantissant un contrôle total avant envoi.</li>
+          <li data-i18n="p1-li1">Conception d'un agent IA qui analyse les emails entrants, récupère le contexte du thread et rédige une réponse prête à valider, sans envoi automatique (Human-in-the-Loop).</li>
+          <li data-i18n="p1-li2">Formalisation de règles métier : ton & style, réponses « support », exclusions (newsletters / no-reply), priorisation, gestion des exceptions, et garde-fous (pas d'informations inventées / demander une information manquante).</li>
+          <li data-i18n="p1-li3">Orchestration via n8n (trigger, filtres, LLM, génération, création de brouillons Gmail, logs/alertes) avec un mode human-in-the-loop garantissant un contrôle total avant envoi.</li>
         </ul>
         <div class="project-tags">
-          <span>IA générative</span><span>Automatisation</span><span>Process métier</span><span>Workflow</span><span>n8n</span><span>LLM</span><span>JavaScript</span><span>Gouvernance IA</span>
+          <span data-i18n="tag-genai">IA générative</span><span data-i18n="tag-auto">Automatisation</span><span data-i18n="tag-process">Process métier</span><span>Workflow</span><span>n8n</span><span>LLM</span><span>JavaScript</span><span data-i18n="tag-gov">Gouvernance IA</span>
         </div>
         <div class="project-footer">
-          <a class="project-link" href="https://inbox-concierge-pro.lovable.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i>Voir le site et la démo</a>
-          <a class="project-link" href="https://github.com/MDom-prog/email-copilot-support-client" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i>Voir le code sur GitHub</a>
+          <a class="project-link" href="https://inbox-concierge-pro.lovable.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i><span data-i18n="link-site-demo">Voir le site et la démo</span></a>
+          <a class="project-link" href="https://github.com/MDom-prog/email-copilot-support-client" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i><span data-i18n="link-github-code">Voir le code sur GitHub</span></a>
         </div>
       </div>
 
@@ -433,21 +452,21 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
         <div class="project-head">
           <img class="project-logo" src="./images/agent-photographe.png" alt="Logo Agent Commercial Photographe">
           <div>
-            <h3 class="project-title">Agent Commercial IA, Concierge Photographe Mariage</h3>
-            <p class="project-meta">Paris (75), France · Projet personnel · 2026</p>
+            <h3 class="project-title" data-i18n="p2-title">Agent Commercial IA, Concierge Photographe Mariage</h3>
+            <p class="project-meta" data-i18n="meta-perso-2026">Paris (75), France · Projet personnel · 2026</p>
           </div>
-          <span class="project-badge">Personnel</span>
+          <span class="project-badge" data-i18n="badge-perso">Personnel</span>
         </div>
-        <p class="project-role">Concepteur & implémenteur d'agent IA conversationnel</p>
+        <p class="project-role" data-i18n="p2-role">Concepteur & implémenteur d'agent IA conversationnel</p>
         <ul class="project-points">
-          <li>Agent conversationnel n8n qui qualifie les prospects, vérifie une vraie disponibilité sur Google Calendar et réserve un appel découverte, avec garde-fous anti-hallucination sur les prix et les disponibilités.</li>
-          <li>RAG sur une base de connaissance (formules, tarifs, FAQ), enregistrement des leads dans un Google Sheet, email de confirmation automatique.</li>
+          <li data-i18n="p2-li1">Agent conversationnel n8n qui qualifie les prospects, vérifie une vraie disponibilité sur Google Calendar et réserve un appel découverte, avec garde-fous anti-hallucination sur les prix et les disponibilités.</li>
+          <li data-i18n="p2-li2">RAG sur une base de connaissance (formules, tarifs, FAQ), enregistrement des leads dans un Google Sheet, email de confirmation automatique.</li>
         </ul>
         <div class="project-tags">
-          <span>IA générative</span><span>RAG</span><span>n8n</span><span>Automatisation</span><span>Agent conversationnel</span><span>Google Calendar</span>
+          <span data-i18n="tag-genai">IA générative</span><span>RAG</span><span>n8n</span><span data-i18n="tag-auto">Automatisation</span><span data-i18n="tag-convagent">Agent conversationnel</span><span>Google Calendar</span>
         </div>
         <div class="project-footer">
-          <a class="project-link" href="https://github.com/MDom-prog/agent-conversationnel-photographe" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i>Voir le code sur GitHub</a>
+          <a class="project-link" href="https://github.com/MDom-prog/agent-conversationnel-photographe" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i><span data-i18n="link-github-code">Voir le code sur GitHub</span></a>
         </div>
       </div>
 
@@ -456,18 +475,18 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
           <img class="project-logo" src="./images/safran.png" alt="Logo Safran">
           <div>
             <h3 class="project-title">Safran Aircraft Engines</h3>
-            <p class="project-meta">Paris (75), France · Projet académique · 2024</p>
+            <p class="project-meta" data-i18n="meta-acad-2024">Paris (75), France · Projet académique · 2024</p>
           </div>
-          <span class="project-badge">Académique</span>
+          <span class="project-badge" data-i18n="badge-acad">Académique</span>
         </div>
-        <p class="project-role">Rôle : Analyste stratégie Data & RH</p>
+        <p class="project-role" data-i18n="p3-role">Rôle : Analyste stratégie Data & RH</p>
         <ul class="project-points">
-          <li>Analyse des retours candidats et employés (Glassdoor, Indeed) afin d'identifier les leviers d'attractivité, de satisfaction et de rétention des talents multigénérationnels.</li>
-          <li>Mise en œuvre de techniques d'analyse textuelle (mots-clés, analyse factorielle, regroupements) pour faire émerger les thèmes clés et les perceptions associées à Safran et à ses concurrents.</li>
-          <li>Benchmark des pratiques RH du secteur et formulation de recommandations opérationnelles en matière de marque employeur, diversité, flexibilité et développement des talents.</li>
+          <li data-i18n="p3-li1">Analyse des retours candidats et employés (Glassdoor, Indeed) afin d'identifier les leviers d'attractivité, de satisfaction et de rétention des talents multigénérationnels.</li>
+          <li data-i18n="p3-li2">Mise en œuvre de techniques d'analyse textuelle (mots-clés, analyse factorielle, regroupements) pour faire émerger les thèmes clés et les perceptions associées à Safran et à ses concurrents.</li>
+          <li data-i18n="p3-li3">Benchmark des pratiques RH du secteur et formulation de recommandations opérationnelles en matière de marque employeur, diversité, flexibilité et développement des talents.</li>
         </ul>
         <div class="project-tags">
-          <span>Stratégie RH</span><span>Analyse de données</span><span>Text mining</span><span>Benchmark</span><span>Cartographie</span><span>Recommandations</span>
+          <span data-i18n="tag-hr">Stratégie RH</span><span data-i18n="tag-dataanalysis">Analyse de données</span><span>Text mining</span><span>Benchmark</span><span data-i18n="tag-mapping">Cartographie</span><span data-i18n="tag-reco">Recommandations</span>
         </div>
       </div>
 
@@ -476,18 +495,18 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
           <img class="project-logo" src="./images/alan-allman.png" alt="Logo Alan Allman Associates">
           <div>
             <h3 class="project-title">Alan Allman Associates / Siderlog</h3>
-            <p class="project-meta">Paris (75), France · Projet académique · 2024</p>
+            <p class="project-meta" data-i18n="meta-acad-2024">Paris (75), France · Projet académique · 2024</p>
           </div>
-          <span class="project-badge">Académique</span>
+          <span class="project-badge" data-i18n="badge-acad">Académique</span>
         </div>
-        <p class="project-role">Rôle : Analyste stratégie & due diligence (OSINT)</p>
+        <p class="project-role" data-i18n="p4-role">Rôle : Analyste stratégie & due diligence (OSINT)</p>
         <ul class="project-points">
-          <li>Réalisation d'une due diligence complète (OSINT, stratégique, organisationnelle, financière, concurrentielle et réputationnelle) dans le cadre d'un projet de rachat d'un cabinet de conseil.</li>
-          <li>Analyse des risques, du positionnement, des offres, de la gouvernance, des talents clés, de la performance financière et de l'environnement concurrentiel.</li>
-          <li>Élaboration d'une synthèse décisionnelle structurée (SWOT, matrice de décision) puis contribution à une recommandation d'investissement structurée (« Go sous conditions ») en collaboration avec des consultants.</li>
+          <li data-i18n="p4-li1">Réalisation d'une due diligence complète (OSINT, stratégique, organisationnelle, financière, concurrentielle et réputationnelle) dans le cadre d'un projet de rachat d'un cabinet de conseil.</li>
+          <li data-i18n="p4-li2">Analyse des risques, du positionnement, des offres, de la gouvernance, des talents clés, de la performance financière et de l'environnement concurrentiel.</li>
+          <li data-i18n="p4-li3">Élaboration d'une synthèse décisionnelle structurée (SWOT, matrice de décision) puis contribution à une recommandation d'investissement structurée (« Go sous conditions ») en collaboration avec des consultants.</li>
         </ul>
         <div class="project-tags">
-          <span>OSINT</span><span>KYC</span><span>M&A</span><span>Stratégie d'entreprise</span><span>Analyse des risques</span><span>Due diligence</span>
+          <span>OSINT</span><span>KYC</span><span>M&A</span><span data-i18n="tag-corpstrat">Stratégie d'entreprise</span><span data-i18n="tag-riskanalysis">Analyse des risques</span><span>Due diligence</span>
         </div>
       </div>
 
@@ -495,19 +514,19 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
         <div class="project-head">
           <img class="project-logo" src="./images/nofilter.png" alt="Logo NoFilter">
           <div>
-            <h3 class="project-title">NoFilter (Startup, valorisation des déchets agricoles)</h3>
-            <p class="project-meta">Paris (75), France · Projet académique · 2023</p>
+            <h3 class="project-title" data-i18n="p5-title">NoFilter (Startup, valorisation des déchets agricoles)</h3>
+            <p class="project-meta" data-i18n="meta-acad-2023">Paris (75), France · Projet académique · 2023</p>
           </div>
-          <span class="project-badge">Académique</span>
+          <span class="project-badge" data-i18n="badge-acad">Académique</span>
         </div>
-        <p class="project-role">Rôle : Analyste stratégie internationale</p>
+        <p class="project-role" data-i18n="p5-role">Rôle : Analyste stratégie internationale</p>
         <ul class="project-points">
-          <li>Étude approfondie de la stratégie d'internationalisation d'une startup spécialisée dans la valorisation des déchets agricoles (fruits & légumes).</li>
-          <li>Évaluation de la faisabilité pour exporter le modèle d'affaire français vers des marchés étrangers sensibles à la durabilité.</li>
-          <li>Développement de compétences en stratégie internationale et collaboration en équipe.</li>
+          <li data-i18n="p5-li1">Étude approfondie de la stratégie d'internationalisation d'une startup spécialisée dans la valorisation des déchets agricoles (fruits & légumes).</li>
+          <li data-i18n="p5-li2">Évaluation de la faisabilité pour exporter le modèle d'affaire français vers des marchés étrangers sensibles à la durabilité.</li>
+          <li data-i18n="p5-li3">Développement de compétences en stratégie internationale et collaboration en équipe.</li>
         </ul>
         <div class="project-tags">
-          <span>Analyse stratégique</span><span>Internationalisation</span><span>Durabilité</span><span>Agroalimentaire</span>
+          <span data-i18n="tag-stratanalysis">Analyse stratégique</span><span data-i18n="tag-intl">Internationalisation</span><span data-i18n="tag-sustain">Durabilité</span><span data-i18n="tag-agri">Agroalimentaire</span>
         </div>
       </div>
 
@@ -515,23 +534,23 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
         <div class="project-head">
           <img class="project-logo" src="./images/greennudge.png" alt="Mémoire Green Nudge">
           <div>
-            <h3 class="project-title">Mémoire de fin d'études, Green Nudge</h3>
-            <p class="project-meta">Paris 1 Panthéon-Sorbonne · M2 Stratégie Internationale & IE · 2023-2024</p>
+            <h3 class="project-title" data-i18n="p6-title">Mémoire de fin d'études, Green Nudge</h3>
+            <p class="project-meta" data-i18n="meta-thesis">Paris 1 Panthéon-Sorbonne · M2 Stratégie Internationale & IE · 2023-2024</p>
           </div>
-          <span class="project-badge">Mémoire</span>
+          <span class="project-badge" data-i18n="badge-thesis">Mémoire</span>
         </div>
-        <p class="project-role">Rôle : Chercheur / Analyste</p>
+        <p class="project-role" data-i18n="p6-role">Rôle : Chercheur / Analyste</p>
         <ul class="project-points">
-          <li>Analyse de l'intégration des <strong>Green Nudges</strong> en entreprise pour promouvoir les comportements écologiques.</li>
-          <li>Évaluation de leur contribution à la gestion des <strong>risques environnementaux</strong> à l'échelle globale.</li>
-          <li>Méthodologie mixte : exploitation de rapports d'entreprise, données statistiques et revue académique.</li>
-          <li>Production d'un mémoire de <strong>80 pages</strong>, soutenu avec succès.</li>
+          <li data-i18n-html="p6-li1">Analyse de l'intégration des <strong>Green Nudges</strong> en entreprise pour promouvoir les comportements écologiques.</li>
+          <li data-i18n-html="p6-li2">Évaluation de leur contribution à la gestion des <strong>risques environnementaux</strong> à l'échelle globale.</li>
+          <li data-i18n="p6-li3">Méthodologie mixte : exploitation de rapports d'entreprise, données statistiques et revue académique.</li>
+          <li data-i18n-html="p6-li4">Production d'un mémoire de <strong>80 pages</strong>, soutenu avec succès.</li>
         </ul>
         <div class="project-tags">
-          <span>Stratégie</span><span>Durabilité</span><span>Green Nudge</span><span>Gestion des risques</span><span>Recherche académique</span>
+          <span data-i18n="tag-strategy">Stratégie</span><span data-i18n="tag-sustain">Durabilité</span><span>Green Nudge</span><span data-i18n="tag-riskmgmt">Gestion des risques</span><span data-i18n="tag-acadresearch">Recherche académique</span>
         </div>
         <div class="project-footer">
-          <a class="project-link" href="./documents/Présentation mémoire diaporama.pptx" target="_blank"><i class="fa-solid fa-file-powerpoint"></i>Présentation pptx</a>
+          <a class="project-link" href="./documents/Présentation mémoire diaporama.pptx" target="_blank"><i class="fa-solid fa-file-powerpoint"></i><span data-i18n="link-pptx">Présentation pptx</span></a>
         </div>
       </div>
 
@@ -539,22 +558,22 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
         <div class="project-head">
           <img class="project-logo" src="./images/Datascience.png" alt="Logo Datascience">
           <div>
-            <h3 class="project-title">Analyse des grandes compagnies d'assurance mondiales</h3>
-            <p class="project-meta">Paris (75), France · Projet personnel · 2023</p>
+            <h3 class="project-title" data-i18n="p7-title">Analyse des grandes compagnies d'assurance mondiales</h3>
+            <p class="project-meta" data-i18n="meta-perso-2023">Paris (75), France · Projet personnel · 2023</p>
           </div>
-          <span class="project-badge">Personnel</span>
+          <span class="project-badge" data-i18n="badge-perso">Personnel</span>
         </div>
-        <p class="project-role">Rôle : Analyste Data & Intelligence Économique</p>
+        <p class="project-role" data-i18n="p7-role">Rôle : Analyste Data & Intelligence Économique</p>
         <ul class="project-points">
-          <li>Analyse croisée de données financières et de discours publics de grandes compagnies d'assurance afin d'identifier les liens entre performance économique, communication et perception émotionnelle.</li>
-          <li>Traitement de données textuelles (nettoyage, extraction de mots-clés, analyse des sentiments et des émotions), analyse multivariée (ACM) et interprétation stratégique des résultats.</li>
-          <li>Élaboration de recommandations opérationnelles pour améliorer le positionnement, la communication et la perception des entreprises sur leur marché.</li>
+          <li data-i18n="p7-li1">Analyse croisée de données financières et de discours publics de grandes compagnies d'assurance afin d'identifier les liens entre performance économique, communication et perception émotionnelle.</li>
+          <li data-i18n="p7-li2">Traitement de données textuelles (nettoyage, extraction de mots-clés, analyse des sentiments et des émotions), analyse multivariée (ACM) et interprétation stratégique des résultats.</li>
+          <li data-i18n="p7-li3">Élaboration de recommandations opérationnelles pour améliorer le positionnement, la communication et la perception des entreprises sur leur marché.</li>
         </ul>
         <div class="project-tags">
-          <span>Intelligence économique</span><span>Analyse de données</span><span>NLP</span><span>Analyse stratégique</span>
+          <span data-i18n="tag-ci">Intelligence économique</span><span data-i18n="tag-dataanalysis">Analyse de données</span><span>NLP</span><span data-i18n="tag-stratanalysis">Analyse stratégique</span>
         </div>
         <div class="project-footer">
-          <a class="project-link" href="https://github.com/MDom-prog/analyse-discours-assurance" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i>Voir le dépôt GitHub</a>
+          <a class="project-link" href="https://github.com/MDom-prog/analyse-discours-assurance" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i><span data-i18n="link-github-repo">Voir le dépôt GitHub</span></a>
         </div>
       </div>
 
@@ -562,19 +581,19 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
         <div class="project-head">
           <img class="project-logo" src="./images/HearYou.png" alt="Logo HearYou">
           <div>
-            <h3 class="project-title">HearYou, application de reconnaissance vocale pour personnes malentendantes</h3>
-            <p class="project-meta">Paris (75), France · Projet entrepreneurial académique · 2022-2023</p>
+            <h3 class="project-title" data-i18n="p8-title">HearYou, application de reconnaissance vocale pour personnes malentendantes</h3>
+            <p class="project-meta" data-i18n="meta-acadentre">Paris (75), France · Projet entrepreneurial académique · 2022-2023</p>
           </div>
-          <span class="project-badge">Académique</span>
+          <span class="project-badge" data-i18n="badge-acad">Académique</span>
         </div>
-        <p class="project-role">Rôle : Porteur de projet / Analyste produit & stratégie</p>
+        <p class="project-role" data-i18n="p8-role">Rôle : Porteur de projet / Analyste produit & stratégie</p>
         <ul class="project-points">
-          <li>Conception d'une idée de start-up visant à améliorer l'accessibilité et l'inclusion des personnes malentendantes grâce à une application mobile de transcription vocale en temps réel.</li>
-          <li>Définition de la proposition de valeur, du marché cible, du positionnement concurrentiel et du business model (abonnement, partenariats, freemium).</li>
-          <li>Création du business model, du site vitrine du projet et préparation d'un pitch présenté devant un public.</li>
+          <li data-i18n="p8-li1">Conception d'une idée de start-up visant à améliorer l'accessibilité et l'inclusion des personnes malentendantes grâce à une application mobile de transcription vocale en temps réel.</li>
+          <li data-i18n="p8-li2">Définition de la proposition de valeur, du marché cible, du positionnement concurrentiel et du business model (abonnement, partenariats, freemium).</li>
+          <li data-i18n="p8-li3">Création du business model, du site vitrine du projet et préparation d'un pitch présenté devant un public.</li>
         </ul>
         <div class="project-tags">
-          <span>Innovation sociale</span><span>Entrepreneuriat</span><span>Product thinking</span><span>Business model</span><span>Inclusion numérique</span>
+          <span data-i18n="tag-socinnov">Innovation sociale</span><span data-i18n="tag-entre">Entrepreneuriat</span><span>Product thinking</span><span>Business model</span><span data-i18n="tag-diginc">Inclusion numérique</span>
         </div>
       </div>
 
@@ -585,7 +604,7 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
 <!-- EXPERIENCES -->
 <section id="experiences" class="on-alt">
   <div class="wrap">
-    <h2>Expériences</h2>
+    <h2 data-i18n="exp-title">Expériences</h2>
     <div class="section-rule"></div>
     <div class="timeline">
       <div class="timeline-item">
@@ -593,8 +612,8 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
         <div class="timeline-content">
           <h3>Orange</h3>
           <p class="timeline-date">2025</p>
-          <p class="timeline-role">AI Experimentation Officer (Stage)</p>
-          <p class="timeline-desc">Développé un prototype IA pour CRM en générant automatiquement des e-mails et SMS avec LLM.</p>
+          <p class="timeline-role" data-i18n="exp1-role">AI Experimentation Officer (Stage)</p>
+          <p class="timeline-desc" data-i18n="exp1-desc">Développé un prototype IA pour CRM en générant automatiquement des e-mails et SMS avec LLM.</p>
         </div>
       </div>
       <div class="timeline-item">
@@ -602,8 +621,8 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
         <div class="timeline-content">
           <h3>Compagnie de Chemin de Fer Départementaux (CFD)</h3>
           <p class="timeline-date">2023</p>
-          <p class="timeline-role">Assistant Chef de Projet Digital (Stage)</p>
-          <p class="timeline-desc">Optimisé le SEO d'Infflux (Semrush, Majestic), mené des analyses concurrentielles, rédigé du contenu web et réalisé des benchmarks digitaux.</p>
+          <p class="timeline-role" data-i18n="exp2-role">Assistant Chef de Projet Digital (Stage)</p>
+          <p class="timeline-desc" data-i18n="exp2-desc">Optimisé le SEO d'Infflux (Semrush, Majestic), mené des analyses concurrentielles, rédigé du contenu web et réalisé des benchmarks digitaux.</p>
         </div>
       </div>
       <div class="timeline-item">
@@ -611,8 +630,8 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
         <div class="timeline-content">
           <h3>Groupe Rodin</h3>
           <p class="timeline-date">2022</p>
-          <p class="timeline-role">Assistant Gestionnaire de Patrimoine (Stage)</p>
-          <p class="timeline-desc">Prospecté par phoning, assuré le suivi client via CRM et soutenu la présentation de solutions d'assurance.</p>
+          <p class="timeline-role" data-i18n="exp3-role">Assistant Gestionnaire de Patrimoine (Stage)</p>
+          <p class="timeline-desc" data-i18n="exp3-desc">Prospecté par phoning, assuré le suivi client via CRM et soutenu la présentation de solutions d'assurance.</p>
         </div>
       </div>
     </div>
@@ -624,16 +643,16 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
   <div class="wrap">
     <h2>Contact</h2>
     <div class="section-rule"></div>
-    <p class="contact-lead">Prêt à discuter de projets innovants ? N'hésitez pas à me contacter !</p>
+    <p class="contact-lead" data-i18n="contact-lead">Prêt à discuter de projets innovants ? N'hésitez pas à me contacter !</p>
 
     <div class="contact-actions">
       <a class="btn btn-solid" href="mailto:macdonald.domnic@gmail.com?subject=Contact%20depuis%20le%20portfolio&body=Bonjour%20Domnic,%0A%0AJe%20vous%20contacte%20depuis%20votre%20portfolio.%0A%0A---" aria-label="Envoyer un e-mail">
         <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5Z"/></svg>
-        Envoyer un e-mail
+        <span data-i18n="btn-send-mail">Envoyer un e-mail</span>
       </a>
       <button class="btn btn-outline-dark" id="copyMail" data-mail="macdonald.domnic@gmail.com" aria-live="polite">
         <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M16 1H4a2 2 0 0 0-2 2v12h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H8V7h11v14Z"/></svg>
-        Copier l'adresse
+        <span data-i18n="btn-copy-mail">Copier l'adresse</span>
       </button>
       <a class="btn btn-outline-dark" href="https://www.linkedin.com/in/domnic-macdonald/" target="_blank" rel="noopener" aria-label="Ouvrir mon profil LinkedIn">
         <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM0 8h5v15H0V8Zm7.5 0h4.8v2.06h.07c.67-1.27 2.3-2.6 4.73-2.6C21.4 7.46 24 9.7 24 14.07V23H19v-7.76c0-1.85-.03-4.22-2.57-4.22-2.58 0-2.98 2.01-2.98 4.09V23H7.5V8Z"/></svg>
@@ -646,17 +665,312 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
     </div>
 
     <div class="cv-download">
-      <a href="./documents/CV Domnic.pdf" target="_blank" class="btn btn-solid">Télécharger mon CV</a>
+      <a href="./documents/CV Domnic.pdf" target="_blank" class="btn btn-solid" data-i18n="cv-download">Télécharger mon CV</a>
     </div>
 </section>
 
 <footer>
-  <p>© 2026 Domnic Macdonald. Tous droits réservés.</p>
+  <p data-i18n="footer">© 2026 Domnic Macdonald. Tous droits réservés.</p>
 </footer>
 
 <button id="backToTop" class="back-to-top" aria-label="Retour en haut">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l-8 8h5v8h6v-8h5z" fill="currentColor"/></svg>
 </button>
 <script src="main.js"></script>
+<script>
+/* ---- Bascule de langue FR / EN ---------------------------------------- */
+const I18N = {
+ "fr": {
+  "nav-home": "Accueil",
+  "nav-about": "À propos",
+  "nav-skills": "Compétences",
+  "nav-projects": "Projets",
+  "nav-experiences": "Expériences",
+  "hero-status": "En recherche active : CDI, CDD ou VIE",
+  "hero-profession": "Consultant Data & IA. De la stratégie au prototype.",
+  "hero-tagline": "« Allier stratégie et innovation pour transformer les données en leviers de performance durable »",
+  "hero-cta-projects": "Voir mes projets",
+  "hero-cta-contact": "Me contacter",
+  "about-title": "À propos",
+  "about-p1": "Consultant en Strategy Data & IA appliquée, je mets à profit mes compétences en analyse, pilotage de projet et innovation numérique pour accompagner les entreprises dans leur transformation.",
+  "about-p2": "Mon parcours en Stratégie Internationale et Intelligence Économique (Master 2, Université Paris 1 Panthéon-Sorbonne) m'a permis de développer une vision globale reliant performance économique, data et innovation responsable.",
+  "about-p3": "Passionné par la valorisation des données et l'intelligence artificielle, je m'intéresse particulièrement à leurs applications concrètes dans la transformation des organisations, avec l'ambition de créer de la valeur durable et de renforcer la prise de décision grâce à des solutions data-driven.",
+  "about-callout": "Je recherche aujourd'hui un poste de Consultant Junior Data & IA, Business Analyst IA ou Chef de Projet Data/IA, en CDI, CDD ou VIE.",
+  "skills-title": "Compétences Techniques",
+  "lvl-adv": "Avancé",
+  "skill-r": "Analyse statistique",
+  "lvl-int": "Intermédiaire",
+  "skill-sql": "Modélisation, requêtes, jointures",
+  "cat-genai": "IA Générative & Agents",
+  "skill-pe": "System prompts, garde-fous anti-hallucination, itération",
+  "skill-rag": "n8n, embeddings, bases de connaissance",
+  "cat-auto": "Automatisation & Web",
+  "skill-scraping": "Requests, BeautifulSoup (SEO : Semrush, Majestic)",
+  "skill-anon": "Regex & filtres",
+  "cat-tools": "Gestion & Outils",
+  "skill-jira": "Gestion de projets",
+  "skill-git": "Versionning, collaboration",
+  "projects-title": "Projets",
+  "p1-title": "Agent IA de Gestion d'Emails",
+  "meta-perso-2026": "Paris (75), France · Projet personnel · 2026",
+  "p1-role": "Concepteur & implémenteur d'Agents IA métier",
+  "p1-li1": "Conception d'un agent IA qui analyse les emails entrants, récupère le contexte du thread et rédige une réponse prête à valider, sans envoi automatique (Human-in-the-Loop).",
+  "p1-li2": "Formalisation de règles métier : ton & style, réponses « support », exclusions (newsletters / no-reply), priorisation, gestion des exceptions, et garde-fous (pas d'informations inventées / demander une information manquante).",
+  "p1-li3": "Orchestration via n8n (trigger, filtres, LLM, génération, création de brouillons Gmail, logs/alertes) avec un mode human-in-the-loop garantissant un contrôle total avant envoi.",
+  "tag-genai": "IA générative",
+  "tag-auto": "Automatisation",
+  "tag-process": "Process métier",
+  "tag-gov": "Gouvernance IA",
+  "p2-title": "Agent Commercial IA, Concierge Photographe Mariage",
+  "badge-perso": "Personnel",
+  "p2-role": "Concepteur & implémenteur d'agent IA conversationnel",
+  "p2-li1": "Agent conversationnel n8n qui qualifie les prospects, vérifie une vraie disponibilité sur Google Calendar et réserve un appel découverte, avec garde-fous anti-hallucination sur les prix et les disponibilités.",
+  "p2-li2": "RAG sur une base de connaissance (formules, tarifs, FAQ), enregistrement des leads dans un Google Sheet, email de confirmation automatique.",
+  "tag-convagent": "Agent conversationnel",
+  "meta-acad-2024": "Paris (75), France · Projet académique · 2024",
+  "badge-acad": "Académique",
+  "p3-role": "Rôle : Analyste stratégie Data & RH",
+  "p3-li1": "Analyse des retours candidats et employés (Glassdoor, Indeed) afin d'identifier les leviers d'attractivité, de satisfaction et de rétention des talents multigénérationnels.",
+  "p3-li2": "Mise en œuvre de techniques d'analyse textuelle (mots-clés, analyse factorielle, regroupements) pour faire émerger les thèmes clés et les perceptions associées à Safran et à ses concurrents.",
+  "p3-li3": "Benchmark des pratiques RH du secteur et formulation de recommandations opérationnelles en matière de marque employeur, diversité, flexibilité et développement des talents.",
+  "tag-hr": "Stratégie RH",
+  "tag-dataanalysis": "Analyse de données",
+  "tag-mapping": "Cartographie",
+  "tag-reco": "Recommandations",
+  "p4-role": "Rôle : Analyste stratégie & due diligence (OSINT)",
+  "p4-li1": "Réalisation d'une due diligence complète (OSINT, stratégique, organisationnelle, financière, concurrentielle et réputationnelle) dans le cadre d'un projet de rachat d'un cabinet de conseil.",
+  "p4-li2": "Analyse des risques, du positionnement, des offres, de la gouvernance, des talents clés, de la performance financière et de l'environnement concurrentiel.",
+  "p4-li3": "Élaboration d'une synthèse décisionnelle structurée (SWOT, matrice de décision) puis contribution à une recommandation d'investissement structurée (« Go sous conditions ») en collaboration avec des consultants.",
+  "tag-corpstrat": "Stratégie d'entreprise",
+  "tag-riskanalysis": "Analyse des risques",
+  "p5-title": "NoFilter (Startup, valorisation des déchets agricoles)",
+  "meta-acad-2023": "Paris (75), France · Projet académique · 2023",
+  "p5-role": "Rôle : Analyste stratégie internationale",
+  "p5-li1": "Étude approfondie de la stratégie d'internationalisation d'une startup spécialisée dans la valorisation des déchets agricoles (fruits & légumes).",
+  "p5-li2": "Évaluation de la faisabilité pour exporter le modèle d'affaire français vers des marchés étrangers sensibles à la durabilité.",
+  "p5-li3": "Développement de compétences en stratégie internationale et collaboration en équipe.",
+  "tag-stratanalysis": "Analyse stratégique",
+  "tag-intl": "Internationalisation",
+  "tag-sustain": "Durabilité",
+  "tag-agri": "Agroalimentaire",
+  "p6-title": "Mémoire de fin d'études, Green Nudge",
+  "meta-thesis": "Paris 1 Panthéon-Sorbonne · M2 Stratégie Internationale & IE · 2023-2024",
+  "badge-thesis": "Mémoire",
+  "p6-role": "Rôle : Chercheur / Analyste",
+  "p6-li3": "Méthodologie mixte : exploitation de rapports d'entreprise, données statistiques et revue académique.",
+  "tag-strategy": "Stratégie",
+  "tag-riskmgmt": "Gestion des risques",
+  "tag-acadresearch": "Recherche académique",
+  "p7-title": "Analyse des grandes compagnies d'assurance mondiales",
+  "meta-perso-2023": "Paris (75), France · Projet personnel · 2023",
+  "p7-role": "Rôle : Analyste Data & Intelligence Économique",
+  "p7-li1": "Analyse croisée de données financières et de discours publics de grandes compagnies d'assurance afin d'identifier les liens entre performance économique, communication et perception émotionnelle.",
+  "p7-li2": "Traitement de données textuelles (nettoyage, extraction de mots-clés, analyse des sentiments et des émotions), analyse multivariée (ACM) et interprétation stratégique des résultats.",
+  "p7-li3": "Élaboration de recommandations opérationnelles pour améliorer le positionnement, la communication et la perception des entreprises sur leur marché.",
+  "tag-ci": "Intelligence économique",
+  "p8-title": "HearYou, application de reconnaissance vocale pour personnes malentendantes",
+  "meta-acadentre": "Paris (75), France · Projet entrepreneurial académique · 2022-2023",
+  "p8-role": "Rôle : Porteur de projet / Analyste produit & stratégie",
+  "p8-li1": "Conception d'une idée de start-up visant à améliorer l'accessibilité et l'inclusion des personnes malentendantes grâce à une application mobile de transcription vocale en temps réel.",
+  "p8-li2": "Définition de la proposition de valeur, du marché cible, du positionnement concurrentiel et du business model (abonnement, partenariats, freemium).",
+  "p8-li3": "Création du business model, du site vitrine du projet et préparation d'un pitch présenté devant un public.",
+  "tag-socinnov": "Innovation sociale",
+  "tag-entre": "Entrepreneuriat",
+  "tag-diginc": "Inclusion numérique",
+  "exp-title": "Expériences",
+  "exp1-role": "AI Experimentation Officer (Stage)",
+  "exp1-desc": "Développé un prototype IA pour CRM en générant automatiquement des e-mails et SMS avec LLM.",
+  "exp2-role": "Assistant Chef de Projet Digital (Stage)",
+  "exp2-desc": "Optimisé le SEO d'Infflux (Semrush, Majestic), mené des analyses concurrentielles, rédigé du contenu web et réalisé des benchmarks digitaux.",
+  "exp3-role": "Assistant Gestionnaire de Patrimoine (Stage)",
+  "exp3-desc": "Prospecté par phoning, assuré le suivi client via CRM et soutenu la présentation de solutions d'assurance.",
+  "contact-lead": "Prêt à discuter de projets innovants ? N'hésitez pas à me contacter !",
+  "cv-download": "Télécharger mon CV",
+  "footer": "© 2026 Domnic Macdonald. Tous droits réservés.",
+  "p6-li1": "Analyse de l'intégration des <strong>Green Nudges</strong> en entreprise pour promouvoir les comportements écologiques.",
+  "p6-li2": "Évaluation de leur contribution à la gestion des <strong>risques environnementaux</strong> à l'échelle globale.",
+  "p6-li4": "Production d'un mémoire de <strong>80 pages</strong>, soutenu avec succès.",
+  "link-site-demo": "Voir le site et la démo",
+  "link-github-code": "Voir le code sur GitHub",
+  "link-pptx": "Présentation pptx",
+  "link-github-repo": "Voir le dépôt GitHub",
+  "btn-send-mail": "Envoyer un e-mail",
+  "btn-copy-mail": "Copier l'adresse",
+  "copy-done": "✅ Copié !",
+  "copy-prompt": "Copiez l’adresse e-mail :",
+  "page-title": "Domnic Macdonald — Consultant Data & IA",
+  "page-desc": "Consultant Data & IA junior. Agents conversationnels, RAG et automatisation n8n. M2 Stratégie Internationale & Intelligence Économique, Paris 1 Panthéon-Sorbonne."
+ },
+ "en": {
+  "nav-home": "Home",
+  "nav-about": "About",
+  "nav-skills": "Skills",
+  "nav-projects": "Projects",
+  "nav-experiences": "Experience",
+  "hero-status": "Open to full-time roles: permanent, fixed-term or VIE",
+  "hero-profession": "Data & AI Consultant. From strategy to prototype.",
+  "hero-tagline": "“Combining strategy and innovation to turn data into levers of lasting performance”",
+  "hero-cta-projects": "View my projects",
+  "hero-cta-contact": "Get in touch",
+  "about-title": "About",
+  "about-p1": "As a consultant in applied Data & AI strategy, I draw on my skills in analysis, project management and digital innovation to support companies through their transformation.",
+  "about-p2": "My background in International Strategy and Competitive Intelligence (Master's degree, Universite Paris 1 Pantheon-Sorbonne) gave me a broad perspective connecting economic performance, data and responsible innovation.",
+  "about-p3": "Passionate about turning data into value and about artificial intelligence, I am particularly interested in their concrete applications to organisational transformation, with the ambition of creating lasting value and strengthening decision-making through data-driven solutions.",
+  "about-callout": "I am currently looking for a role as a Junior Data & AI Consultant, AI Business Analyst or Data/AI Project Manager, on a permanent, fixed-term or VIE contract.",
+  "skills-title": "Technical Skills",
+  "lvl-adv": "Advanced",
+  "skill-r": "Statistical analysis",
+  "lvl-int": "Intermediate",
+  "skill-sql": "Modelling, queries, joins",
+  "cat-genai": "Generative AI & Agents",
+  "skill-pe": "System prompts, anti-hallucination guardrails, iteration",
+  "skill-rag": "n8n, embeddings, knowledge bases",
+  "cat-auto": "Automation & Web",
+  "skill-scraping": "Requests, BeautifulSoup (SEO: Semrush, Majestic)",
+  "skill-anon": "Regex & filters",
+  "cat-tools": "Management & Tools",
+  "skill-jira": "Project management",
+  "skill-git": "Versioning, collaboration",
+  "projects-title": "Projects",
+  "p1-title": "AI Email Management Agent",
+  "meta-perso-2026": "Paris (75), France · Personal project · 2026",
+  "p1-role": "Designer & implementer of business AI agents",
+  "p1-li1": "Designed an AI agent that analyses incoming emails, retrieves the thread context and drafts a reply ready for review, with no automatic sending (Human-in-the-Loop).",
+  "p1-li2": "Formalised business rules: tone & style, “support” replies, exclusions (newsletters / no-reply), prioritisation, exception handling, and guardrails (no invented information / ask for missing details).",
+  "p1-li3": "Orchestration via n8n (trigger, filters, LLM, generation, Gmail draft creation, logs/alerts) with a human-in-the-loop mode guaranteeing full control before sending.",
+  "tag-genai": "Generative AI",
+  "tag-auto": "Automation",
+  "tag-process": "Business process",
+  "tag-gov": "AI governance",
+  "p2-title": "AI Sales Agent, Wedding Photographer Concierge",
+  "badge-perso": "Personal",
+  "p2-role": "Designer & implementer of a conversational AI agent",
+  "p2-li1": "An n8n conversational agent that qualifies leads, checks real availability on Google Calendar and books a discovery call, with anti-hallucination guardrails on pricing and availability.",
+  "p2-li2": "RAG over a knowledge base (packages, pricing, FAQ), lead capture into a Google Sheet, automatic confirmation email.",
+  "tag-convagent": "Conversational agent",
+  "meta-acad-2024": "Paris (75), France · Academic project · 2024",
+  "badge-acad": "Academic",
+  "p3-role": "Role: Data & HR strategy analyst",
+  "p3-li1": "Analysed candidate and employee reviews (Glassdoor, Indeed) to identify the drivers of attractiveness, satisfaction and retention across multigenerational talent.",
+  "p3-li2": "Applied text analysis techniques (keywords, factor analysis, clustering) to surface the key themes and perceptions associated with Safran and its competitors.",
+  "p3-li3": "Benchmarked HR practices across the sector and formulated operational recommendations on employer brand, diversity, flexibility and talent development.",
+  "tag-hr": "HR strategy",
+  "tag-dataanalysis": "Data analysis",
+  "tag-mapping": "Mapping",
+  "tag-reco": "Recommendations",
+  "p4-role": "Role: Strategy & due diligence analyst (OSINT)",
+  "p4-li1": "Ran a full due diligence (OSINT, strategic, organisational, financial, competitive and reputational) for the planned acquisition of a consulting firm.",
+  "p4-li2": "Analysed risks, positioning, offerings, governance, key talent, financial performance and the competitive environment.",
+  "p4-li3": "Produced a structured decision brief (SWOT, decision matrix) and contributed to a formal investment recommendation (“Go, with conditions”) alongside consultants.",
+  "tag-corpstrat": "Corporate strategy",
+  "tag-riskanalysis": "Risk analysis",
+  "p5-title": "NoFilter (Startup, agricultural waste recovery)",
+  "meta-acad-2023": "Paris (75), France · Academic project · 2023",
+  "p5-role": "Role: International strategy analyst",
+  "p5-li1": "In-depth study of the international expansion strategy of a startup specialising in agricultural waste recovery (fruit & vegetables).",
+  "p5-li2": "Assessed the feasibility of exporting the French business model to foreign markets receptive to sustainability.",
+  "p5-li3": "Developed skills in international strategy and team collaboration.",
+  "tag-stratanalysis": "Strategic analysis",
+  "tag-intl": "International expansion",
+  "tag-sustain": "Sustainability",
+  "tag-agri": "Agri-food",
+  "p6-title": "Master's Thesis, Green Nudge",
+  "meta-thesis": "Paris 1 Pantheon-Sorbonne · MSc International Strategy & Competitive Intelligence · 2023-2024",
+  "badge-thesis": "Thesis",
+  "p6-role": "Role: Researcher / Analyst",
+  "p6-li3": "Mixed methodology: corporate reports, statistical data and a review of the academic literature.",
+  "tag-strategy": "Strategy",
+  "tag-riskmgmt": "Risk management",
+  "tag-acadresearch": "Academic research",
+  "p7-title": "Analysis of the world's largest insurance companies",
+  "meta-perso-2023": "Paris (75), France · Personal project · 2023",
+  "p7-role": "Role: Data & Competitive Intelligence analyst",
+  "p7-li1": "Cross-analysis of financial data and public discourse from major insurance companies to identify the links between economic performance, communication and emotional perception.",
+  "p7-li2": "Text data processing (cleaning, keyword extraction, sentiment and emotion analysis), multivariate analysis (MCA) and strategic interpretation of the results.",
+  "p7-li3": "Developed operational recommendations to improve companies' positioning, communication and perception in their market.",
+  "tag-ci": "Competitive intelligence",
+  "p8-title": "HearYou, a speech recognition app for hearing-impaired people",
+  "meta-acadentre": "Paris (75), France · Academic entrepreneurial project · 2022-2023",
+  "p8-role": "Role: Project lead / Product & strategy analyst",
+  "p8-li1": "Designed a startup concept to improve accessibility and inclusion for hearing-impaired people through a real-time speech transcription mobile app.",
+  "p8-li2": "Defined the value proposition, target market, competitive positioning and business model (subscription, partnerships, freemium).",
+  "p8-li3": "Built the business model and the project's showcase website, and prepared a pitch delivered to a live audience.",
+  "tag-socinnov": "Social innovation",
+  "tag-entre": "Entrepreneurship",
+  "tag-diginc": "Digital inclusion",
+  "exp-title": "Experience",
+  "exp1-role": "AI Experimentation Officer (Internship)",
+  "exp1-desc": "Built an AI prototype for CRM, automatically generating emails and text messages with LLMs.",
+  "exp2-role": "Digital Project Manager Assistant (Internship)",
+  "exp2-desc": "Optimised Infflux's SEO (Semrush, Majestic), ran competitive analyses, wrote web content and produced digital benchmarks.",
+  "exp3-role": "Wealth Management Assistant (Internship)",
+  "exp3-desc": "Handled phone prospecting, managed client follow-up via CRM and supported the presentation of insurance solutions.",
+  "contact-lead": "Interested in discussing innovative projects? Feel free to get in touch.",
+  "cv-download": "Download my CV",
+  "footer": "© 2026 Domnic Macdonald. All rights reserved.",
+  "p6-li1": "Analysis of how <strong>Green Nudges</strong> are embedded in companies to encourage environmentally friendly behaviour.",
+  "p6-li2": "Assessment of their contribution to managing <strong>environmental risks</strong> on a global scale.",
+  "p6-li4": "Produced an <strong>80-page</strong> thesis, successfully defended.",
+  "link-site-demo": "View the site and demo",
+  "link-github-code": "View the code on GitHub",
+  "link-pptx": "Presentation (pptx)",
+  "link-github-repo": "View the GitHub repository",
+  "btn-send-mail": "Send an email",
+  "btn-copy-mail": "Copy address",
+  "copy-done": "✅ Copied!",
+  "copy-prompt": "Copy the email address:",
+  "page-title": "Domnic Macdonald — Data & AI Consultant",
+  "page-desc": "Junior Data & AI consultant. Conversational agents, RAG and n8n automation. Master's in International Strategy & Competitive Intelligence, Paris 1 Pantheon-Sorbonne."
+ }
+};
+
+function t(key){
+  const d = I18N[document.documentElement.lang] || I18N.fr;
+  return (d && d[key] !== undefined) ? d[key] : (I18N.fr[key] || '');
+}
+window.t = t;
+
+function applyLang(lang){
+  if(!I18N[lang]) lang = 'fr';
+  document.documentElement.lang = lang;
+  document.title = t('page-title');
+  const desc = document.querySelector('meta[name="description"]');
+  if(desc) desc.setAttribute('content', t('page-desc'));
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = I18N[lang][el.dataset.i18n];
+    if(v !== undefined) el.textContent = v;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const v = I18N[lang][el.dataset.i18nHtml];
+    if(v !== undefined) el.innerHTML = v;
+  });
+
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    const on = b.dataset.lang === lang;
+    b.classList.toggle('is-on', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+
+  try{ localStorage.setItem('lang', lang); }catch(e){}
+  const u = new URL(window.location.href);
+  if(lang === 'fr') u.searchParams.delete('lang'); else u.searchParams.set('lang', lang);
+  history.replaceState(null, '', u);
+}
+window.applyLang = applyLang;
+
+(function(){
+  let lang = new URLSearchParams(location.search).get('lang');
+  if(!I18N[lang]){
+    try{ lang = localStorage.getItem('lang'); }catch(e){ lang = null; }
+  }
+  if(!I18N[lang]) lang = (navigator.language || 'fr').toLowerCase().startsWith('en') ? 'en' : 'fr';
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.addEventListener('click', () => applyLang(b.dataset.lang));
+  });
+  applyLang(lang);
+})();
+</script>
+
 </body>
 </html>
