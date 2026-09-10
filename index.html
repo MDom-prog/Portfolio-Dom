@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -16,6 +16,7 @@
   --bg:#F7F7F4;
   --surface:#FFFFFF;
   --surface-alt:#EFEFEA;
+  --section-alt:#F4F4F1;
   --ink:#111111;
   --ink-soft:#4A4A46;
   --accent:#FF5A1F;
@@ -35,7 +36,11 @@ body{
 }
 img{ max-width:100%; display:block; }
 .wrap{ max-width:1180px; margin:0 auto; padding:0 1.5rem; }
-h1,h2,h3{
+h1,h2{
+  font-family:"Cormorant Garamond",Georgia,serif; font-weight:700; text-transform:uppercase;
+  letter-spacing:.005em; margin:0;
+}
+h3{
   font-family:"Bricolage Grotesque",sans-serif; font-weight:800; text-transform:uppercase;
   letter-spacing:-.02em; margin:0;
 }
@@ -87,11 +92,11 @@ header{
 }
 
 /* ============ SECTIONS (generic) ============ */
-section{ padding:5.5rem 0; scroll-margin-top:76px; }
+section{ padding:10rem 0; scroll-margin-top:76px; }
 section h2{ font-size:clamp(1.7rem,3.4vw,2.4rem); margin-bottom:.5rem; }
 .section-rule{ width:64px; height:5px; background:var(--accent); margin-bottom:2.2rem; }
 .on-dark{ background:var(--ink); color:var(--bg); }
-.on-alt{ background:var(--surface-alt); }
+.on-alt{ background:var(--section-alt); }
 
 /* ============ HERO ============ */
 .hero{ background:var(--ink); color:var(--bg); padding:9rem 0 4.5rem; }
@@ -132,6 +137,7 @@ section h2{ font-size:clamp(1.7rem,3.4vw,2.4rem); margin-bottom:.5rem; }
   justify-self:end; max-width:280px;
 }
 @media (max-width:768px){
+  section{ padding:6rem 0; }
   .hero{ padding:7rem 0 3rem; }
   .hero-grid{ grid-template-columns:1fr; }
   .hero-photo{ max-width:200px; justify-self:start; order:-1; margin-bottom:1.5rem; }
@@ -254,7 +260,6 @@ footer{ background:var(--ink); color:#9A9A95; text-align:center; padding:1.2rem;
 }
 
 @media (max-width:600px){
-  section{ padding:3.5rem 0; }
   .hero{ padding:6.5rem 0 2.5rem; }
 }
 </style>
